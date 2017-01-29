@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta lang="es">
+  <title>CM Jaizkibel</title>
+
+  <!-- FOR ANGULAR ROUTING -->
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  
+  <!-- Android Web App -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <!-- iOS Web App -->
+  <!-- Allow web app to be run in full-screen mode. -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <!-- Make the app title different than the page title. -->
+  <meta name="apple-mobile-web-app-title" content="CM Jaizkibel">
+  <!-- Configure the status bar. -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <!-- Disable automatic phone number detection. -->
+  <meta name="format-detection" content="telephone=no">
+  <!-- iPad retina icon -->
+  <link href="assets/appItems/icons/ios/152.png" sizes="152x152" rel="apple-touch-icon-precomposed">
+  <!-- iPad retina icon (iOS < 7) -->
+  <link href="assets/appItems/icons/ios/144.png" sizes="144x144" rel="apple-touch-icon-precomposed">
+  <!-- iPad non-retina icon -->
+  <link href="assets/appItems/icons/ios/76.png" sizes="76x76" rel="apple-touch-icon-precomposed">
+  <!-- iPad non-retina icon (iOS < 7) -->
+  <link href="assets/appItems/icons/ios/72.png" sizes="72x72" rel="apple-touch-icon-precomposed">
+  <!-- iPhone 6 Plus icon -->
+  <link href="assets/appItems/icons/ios/120.png" sizes="120x120" rel="apple-touch-icon-precomposed">
+  <!-- iPhone retina icon (iOS < 7) -->
+  <link href="assets/appItems/icons/ios/114.png" sizes="114x114" rel="apple-touch-icon-precomposed">
+  <!-- iPhone non-retina icon (iOS < 7) -->
+  <link href="assets/appItems/icons/ios/57.png" sizes="57x57" rel="apple-touch-icon-precomposed">
+
+  <!-- load dependencies via CDN -->
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+  <!-- JS -->
+  
+  <script src="../../assets/libs/angular/angular.min.js"></script>
+  <script src="../../assets/libs/angular-route/angular-route.min.js"></script>
+  <script src="../../assets/libs/angular-animate/angular-animate.min.js"></script>
+  <script src="../../assets/libs/angular-aria/angular-aria.min.js"></script>
+  <script src="../../assets/libs/angular-cookies/angular-cookies.min.js"></script>
+  <script src="../../assets/libs/angular-material/angular-material.min.js"></script>
+  <script src="../../assets/libs/angular-jwt/dist/angular-jwt.min.js"></script>
+  <script src="../../assets/libs/angular-filter/dist/angular-filter.min.js"></script>
+  <script src="../../assets/libs/moment/min/moment.min.js"></script>
+  <script src="../../assets/libs/papaparse/papaparse.min.js"></script>
+  <script src="../../assets/libs/angular-messages/angular-messages.min.js"></script>
+  <script src="../../assets/svg-assets-cache.js"></script>
+
+  <script src="../../dist/app.js"></script>
+
+
+  <!-- 
+  <script src="app/controllers/mainController.js"></script>
+  <script src="app/controllers/mealController.js"></script>
+  <script src="app/controllers/settingsController.js"></script>
+  <script src="app/controllers/booksController.js"></script>
+  <script src="app/controllers/eventsController.js"></script>
+  <script src="app/controllers/sportsController.js"></script>
+
+  <script src="app/services/authService.js"></script>
+  <script src="app/services/mealService.js"></script>
+  <script src="app/services/settingsService.js"></script>
+  <script src="app/services/bookService.js"></script>
+  <script src="app/services/eventsService.js"></script>
+  <script src="app/services/sportsService.js"></script>
+
+  <script src="app/app.routes.js"></script>
+  <script src="app/app.js"></script>
+
+  -->
+
+  <!-- CSS  -->
+  <!-- load bootstrap from CDN and custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.min.css">
+</head>
+<body ng-app="cmjaizkibel" ng-controller="MainController as main" ng-class="{landing: !userData.isLogged, normal:userData.isLogged}" ng-cloak layout="column">
+  <!-- NAVBAR -->
+  <md-toolbar ng-if="userData.isLogged">
+    <div class="md-toolbar-tools">
+      <h2>
+        <span>C.M. Jaizkibel</span>
+      </h2>
+      <span flex></span>
+      <a href="#" ng-click="main.logOut()"><md-button>Cerrar Sesión</md-button></a>
+    </div>
+    <span flex></span>
+      <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+        <md-nav-item md-nav-href="/meals" name="/meals" >Comidas</md-nav-item>
+        <!--
+        <md-nav-item md-nav-href="/books" name="/books" >Biblioteca</md-nav-item>
+        <md-nav-item md-nav-href="/sports" name="/sports" >Deporte</md-nav-item>
+        -->
+        <md-nav-item md-nav-href="/events" name="/events" >Eventos</md-nav-item>
+        <md-nav-item ng-show="userData.admin" md-nav-href="/settings" name="/settings" >Ajustes</md-nav-item>
+      </md-nav-bar>
+  </md-toolbar>
+  <main ng-class="{login: !userData.isLogged, all: userData.isLogged}" flex layout="column">
+    <!-- ANGULAR VIEWS -->
+    <div ng-view>
+        <!--Here comes the view -->
+    </div>
+  </main>
+
+<script src="../../install-sw.js"></script>
+
+</body>
+</html>

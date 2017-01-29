@@ -1,0 +1,30 @@
+<md-card>
+  <md-card-content ng-init="sports.getSports()">
+    <md-list>
+        <p ng-if="sports.matches.length == 0">No hay ningún partido.</p>
+        <md-list-item class="md-3-line" ng-repeat="match in sports.matches">
+            <div class="md-list-item-text" layout="column">
+                <h3>{{ match.name }}</h3>
+                <h4>{{ match.date | date : 'dd/MM/yyyy'  }}</h4>
+                <p>{{ match.startTime | date : 'HH:mm'  }}-{{ match.endTime | date : 'HH:mm'  }} {{sports.playersNum(match)}}/{{match.numberOfTeams * match.playersPerTeam}} jugadores</p>
+            </div>
+            <md-button class="md-icon-button" aria-label="Borrar" style="margin-top:16px;" ng-click="sports.editMatch(match._id)">
+                <md-icon class="material-icons" aria-label="Actualizar fecha mínima">create</md-icon>
+            </md-button>
+        </md-list-item>
+    </md-list>
+    <div layout="row" layout-xs="column" layout-gt-xs-align="start end">
+        <span flex="noshrink" ng-if="sports.matches.length != 0">
+            <md-button class="md-raised md-primary" ng-disabled="sports.currentPage == 1" ng-click="sports.prevPressed()">Anterior</md-button>
+            <span class="md-subhead" >{{sports.currentPage}}/{{sports.numPages}}</span>
+            <md-button class="md-raised md-primary" ng-disabled="sports.currentPage >= sports.numPages" ng-click="sports.nextPressed()">Siguiente</md-button>
+        </span>
+        <span flex></span>
+        <span layout="row">
+          <span flex></span>
+          <md-button class="md-raised md-primary" href="/addSport">Crear nuevo</md-button>
+          <span flex></span>
+        </span>
+    </div>
+  </md-card-content>
+</md-card>

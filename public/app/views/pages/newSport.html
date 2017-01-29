@@ -1,0 +1,73 @@
+<md-card>
+    <md-card-content>
+        <form ng-submit="sports.isUpdate ? sports.editedMatch() : sports.addMatch()">
+
+            <md-input-container>
+                <label>Deporte</label>
+                <input name="clientName" type="text" ng-model="sports.match.name">
+            </md-input-container>
+
+            <md-autocomplete
+                md-selected-item="sports.match.place"
+                md-search-text-change="sports.matchData('place',sports.search)"
+                md-search-text="sports.search"
+                md-selected-item-change="sport.selectedItemChange(item,'place')"
+                md-items="item in sports.matchData('place',sports.search)"
+                md-item-text="item"
+                placeholder="Instalaciones: "
+                ng-model-options="{debounce: 500}"
+            >
+                <md-item-template>
+                    <span md-highlight-text="sports.search" md-highlight-flags="^i">{{item}}</span>
+                </md-item-template>
+                <md-not-found>
+                    No hemos encontrado "{{sports.search}}".
+                    <a ng-click="sports.newData(sports.search,'place')">Añadir</a>
+                </md-not-found>
+            </md-autocomplete>
+
+            <div layout="column" layout-gt-sm="row" style="margin-top:15px;">
+                <md-input-container class="md-block" flex-gt-sm="25">
+                    <label>Jugadores por equipo</label>
+                    <input type="number" ng-model="sports.match.playersPerTeam">
+                </md-input-container>
+
+                <md-input-container class="md-block" flex-gt-sm="25">
+                    <label>Número de equipos</label>
+                    <input type="number" ng-model="sports.match.numberOfTeams">
+                </md-input-container>
+
+                <md-checkbox flex="50" ng-model="sports.match.waitingList" aria-label="Lista de espera">Marcar último equipo como lista de espera</md-checkbox>
+            </div>
+
+            <div layout="column" layout-gt-xs="row"  >
+                <md-datepicker class="md-block" flex-gt-xs="50" ng-model="sports.match.date" md-placeholder="Fecha" style="margin-top:12px;"></md-datepicker>
+                <div class="md-block" flex-gt-xs="50" layout="row">
+                    <md-input-container class="md-block" >
+                        <label>Hora de inicio</label>
+                        <input type="Time" ng-model="sports.match.startTime">
+                    </md-input-container>
+                    <md-input-container class="md-block" >
+                        <label>Hora de finalización</label>
+                        <input type="Time" ng-model="sports.match.endTime">
+                    </md-input-container>
+                </div>
+            </div>
+
+
+            <div layout="row" layout-wrap layout-align="space-between center">
+                <span flex="45" ng-repeat="team in sports.getNumber(sports.match.numberOfTeams) track by $index">
+                    <p ng-if="$index+1 == sports.match.numberOfTeams && sports.match.waitingList">Lista de espera</p>
+                    <p ng-if="$index+1 != sports.match.numberOfTeams || !sports.match.waitingList">Equipo {{$index + 1}}</p>
+                    <md-input-container ng-repeat="player in sports.getNumber(sports.match.playersPerTeam) track by $index">
+                        <label>{{player}}</label>
+                        <input type="text" ng-model="sports.match.playersList[$parent.$index][$index]">
+                    </md-input-container>
+                </span>
+            </div>
+
+            <md-button type="submit" id="addMatchButton" class="md-raised" ng-class="'md-primary'" aria-label="Enviar">{{sports.sendButtonText}}</md-button>
+            <md-button ng-if="sports.isUpdate" class="md-warn" ng-click="sports.deleteMatch(sports.match._id)">Borrar</md-button>
+        </form>
+    </md-card-content>
+</md-card>

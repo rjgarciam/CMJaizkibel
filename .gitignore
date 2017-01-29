@@ -1,0 +1,15 @@
+node_modules/
+public/assets/libs/
+app/config/config.js
+configAssets/
+
+*.sublime-project
+
+*.sublime-workspace
+
+public/app/env.js
+
+*.log
+
+
+*.sketch

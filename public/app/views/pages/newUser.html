@@ -1,0 +1,39 @@
+<md-card>
+    <md-card-content>
+        <form ng-submit="settings.isUpdate ? settings.editedUser() : settings.addNewUser()">
+             <md-input-container>
+                <label>Nombre:</label>
+                <input name="clientName" type="text" ng-model="settings.user.name">
+            </md-input-container>
+
+            <md-input-container>
+                <label>e-mail</label>
+                <input name="clientName" type="mail" ng-model="settings.user.email">
+            </md-input-container>
+
+            <div layout="column" layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                  <label>Número</label>
+                  <input type="text" ng-model="settings.user.number">
+                </md-input-container>
+
+                <md-checkbox flex ng-checked="settings.isChecked('admin')" ng-click="settings.toggle('admin')" aria-label="Administrador">Administrador</md-checkbox>
+                <md-checkbox flex ng-checked="settings.isChecked('meals')" ng-click="settings.toggle('meals')" aria-label="Comidas">Comidas</md-checkbox>
+                <!--
+                <md-checkbox flex ng-checked="settings.isChecked('library')" ng-click="settings.toggle('library')" aria-label="Biblioteca">Biblioteca</md-checkbox>
+                -->
+                <md-checkbox flex ng-checked="settings.isChecked('hasDiet')" ng-click="settings.toggle('hasDiet')" aria-label="Dieta">Dieta</md-checkbox>
+            </div>
+
+            <md-input-container ng-if="settings.user.hasDiet">
+                <label>Contenido de la dieta</label>
+                <input name="clientName" type="text" ng-model="settings.user.dietContent">
+            </md-input-container>
+
+            <md-button type="submit" id="addBookButton" class="md-raised" ng-class="'md-primary'" aria-label="Enviar">
+                <span>{{settings.sendButtonText}}</span>
+            </md-button>
+            <md-button ng-if="settings.isUpdate" class="md-warn" ng-click="settings.deleteUser(settings.user._id)">Borrar</md-button>
+        </form>
+    </md-card-content>
+</md-card>

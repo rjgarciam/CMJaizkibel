@@ -1,0 +1,124 @@
+<md-content class="normal" flex>
+    <md-card ng-init="meals.allUserNumbers()">
+        <md-card-content ng-init="meals.getLastDay()">
+            <form name="mealsForm" name="myForm" ng-submit="meals.askMeal()" layout="column">
+                <div layout="row" id="mealreq">
+                    <!--
+                    <md-input-container flex>
+                        <label>Número</label>
+                        <input name="clientName" type="number" required ng-model="meals.mealAsked.id">
+                    </md-input-container>
+                    -->
+                    <md-input-container flex="60">
+                        <label>Cambio</label>
+                        <md-select name="selectChange" ng-model="meals.mealAsked.change" required>
+                            <md-option ng-repeat="request in meals.possibleRequests" ng-value="{{ $index }}">
+                                {{request}}
+                            </md-option>
+                        </md-select>
+                            <div class="validation-messages" ng-messages="mealsForm.selectChange.$touched && mealsForm.selectChange.$error">
+                                <div ng-message="required">Campo obligatorio</div>
+                            </div>
+                    </md-input-container>
+
+                    <md-checkbox flex ng-model="meals.repeat" aria-label="Repetir">Repetir cambio</md-checkbox>
+                </div>
+
+
+                <md-input-container ng-if="meals.repeat">
+                    <label>Repetir</label>
+                    <md-select ng-model="meals.mealAsked.doRepeat">
+                        <md-option ng-repeat="repeat in meals.possibleRepeats" value="{{ repeat.id }}">
+                            {{repeat.name }}
+                        </md-option>
+                    </md-select>
+                    <p class="validation-messages">El número máximo de repeticiones en un solo pedido es de 15</p>
+                </md-input-container>
+
+                <div ng-if="meals.screenSize >= 376" layout="row" layout-align="center center">
+                    <div style="text-align:center">
+                    <md-datepicker name="startDate" ng-model="meals.mealAsked.date" md-placeholder="Fecha*" md-min-date="meals.currentDate" required></md-datepicker>
+                        <div class="validation-messages" ng-messages="mealsForm.startDate.$touched && mealsForm.startDate.$error">
+                            <div ng-message="valid">El valor introducido no es válido</div>
+                            <div ng-message="required">Campo obligatorio</div>
+                            <div ng-message="mindate">La fecha mínima es superior a la seleccionada</div>
+                        </div>
+                    </div>
+                    <div style="text-align:center">
+                        <md-datepicker name="endDate" ng-if="meals.repeat" ng-model="meals.mealAsked.endDate" md-placeholder="Hasta*" md-min-date="meals.mealAsked.date" required></md-datepicker>
+                        <div class="validation-messages" ng-messages="mealsForm.endDate.$touched && mealsForm.endDate.$error">
+                            <div ng-message="valid">El valor introducido no es válido</div>
+                            <div ng-message="required">Campo obligatorio</div>
+                            <div ng-message="mindate">La fecha introducida no puede ser menor a la inicial</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div ng-if="meals.screenSize < 376" layout="column" layout-align="center center">
+                    <div style="text-align:center">
+                    <md-datepicker name="startDate" ng-model="meals.mealAsked.date" md-placeholder="Fecha*" md-min-date="meals.currentDate" required></md-datepicker>
+                        <div class="validation-messages" ng-messages="mealsForm.startDate.$touched && mealsForm.startDate.$error">
+                            <div ng-message="valid">El valor introducido no es válido</div>
+                            <div ng-message="required">Campo obligatorio</div>
+                            <div ng-message="mindate">La fecha mínima es superior a la seleccionada</div>
+                        </div>
+                    </div>
+                    <div style="text-align:center">
+                        <md-datepicker name="endDate" ng-if="meals.repeat" ng-model="meals.mealAsked.endDate" md-placeholder="Hasta*" md-min-date="meals.mealAsked.date" required></md-datepicker>
+                        <div class="validation-messages" ng-messages="mealsForm.endDate.$touched && mealsForm.endDate.$error">
+                            <div ng-message="valid">El valor introducido no es válido</div>
+                            <div ng-message="required">Campo obligatorio</div>
+                            <div ng-message="mindate">La fecha introducida no puede ser menor a la inicial</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div layout="row">
+                    <span flex></span>
+                    <md-button type="submit" id="MealsButton" class="md-raised" ng-class="meals.MealError ? 'md-warn' : 'md-primary'" aria-label="Enviar">
+                        <span>{{ meals.mealButtontext }}</span>
+                    </md-button>
+                    <span flex></span>
+                </div>
+            </form>
+            <p class="md-subhead">Fecha mínima actual: <b>{{meals.currentDate | date : 'dd/MM/yyyy' }}</b></p>
+        </md-card-content>
+    </md-card>
+
+
+    <md-card ng-init="meals.myMeals()">
+        <md-card-content>
+            <h2 class="md-headline">Mis cambios</h2>
+            <md-divider></md-divider>
+            <p ng-if="meals.myRequests.length == 0">No has solicitado ningún cambio.</p>
+            <md-list-item class="md-2-line" ng-repeat="request in meals.myRequests| orderBy:'date'" layout="row">
+                <div class="md-list-item-text" layout="column" flex>
+                    <h3>{{ meals.possibleRequests[request.change] }}</h3>
+                    <p>{{ request.date | date:'dd/MM/yyyy' }}</p>
+                </div>
+                <md-button ng-show="request.reqDate >= meals.currentDate" class="md-icon-button" aria-label="Borrar" style="margin-top:16px;" ng-click="meals.deleteRequest(request._id)">
+                    <md-icon class="material-icons" aria-label="Borrar cambio">delete</md-icon>
+                </md-button>
+            </md-list-item>
+
+        </md-card-content>
+    </md-card>
+</md-content>
+
+<md-fab-speed-dial ng-if="$root.userData.meals == true" md-open="false" md-direction="up" ng-class="'md-fling md-fab-bottom-right customFab'" ng-cloak>
+    <md-fab-trigger>
+        <md-button aria-label="menu" class="md-fab md-primary hue-2" >
+            <md-icon class="material-icons">menu</md-icon>
+        </md-button>
+    </md-fab-trigger>
+    <md-fab-actions>
+        <md-button aria-label="Lista de comidas" class="md-fab md-raised md-mini" href="/mealrequests">
+            <md-icon class="material-icons" aria-label="Lista de comidas">format_list_bulleted</md-icon>
+        </md-button>
+        <md-button aria-label="Actualizar fecha mínima" class="md-fab md-raised md-mini" ng-click="meals.NewDate()">
+            <md-icon class="material-icons" aria-label="Actualizar fecha mínima">update</md-icon>
+        </md-button>
+    </md-fab-actions>
+</md-fab-speed-dial>   
+
+

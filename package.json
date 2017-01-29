@@ -1,0 +1,33 @@
+{
+  "name": "cmjaizkibel",
+  "version": "1.0.0",
+  "description": "Internal web application for a students hall of residence",
+  "main": "server.js",
+  "engines": {
+    "node": "6.2.2",
+    "npm": "3.10.5"
+  },
+  "scripts": {
+    "postinstall": "./node_modules/bower/bin/bower install",
+    "start": "node server.js"
+  },
+  "author": "rjgarciam",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "bower": "^1.7.9",
+    "express": "^4.14.0",
+    "helmet": "^3.1.0",
+    "jsonwebtoken": "^7.0.1",
+    "mongoose": "^4.5.3",
+    "morgan": "^1.7.0",
+    "passport": "^0.3.2",
+    "passport-google-oauth": "^1.0.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-ng-annotate": "^2.0.0",
+    "gulp-uglify": "^1.5.4",
+    "sw-precache": "^4.2.3"
+  }
+}

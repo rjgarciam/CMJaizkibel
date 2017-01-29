@@ -1,0 +1,24 @@
+<md-card>
+    <md-card-content ng-init="events.getEvents()">
+        <h2 class="md-headline">Próximos eventos</h2>
+        <md-divider ></md-divider>
+        <md-list>
+        <p ng-if="events.list.length == 0">No hay ningún evento próximamente.</p>
+            <md-list-item class="md-3-line" ng-repeat="event in events.list">
+                <div layout="column">
+                    <time class="icon">
+                        <strong>{{ events.monthNames[event.start.dateTime.getMonth()] }}</strong>
+                        <span>{{ event.start.dateTime | date : 'dd' }}</span>
+                    </time>
+                </div>
+                <div class="md-list-item-text" layout="column">
+                    <h3>{{ event.summary }}</h3>
+                    <h4>{{ event.displayName }}</h4>
+                    <p ng-if="event.start.wholeDay">Todo el día</p>
+                    <p ng-if="event.start.manyDays">{{ event.start.dateTime | date : 'dd/MM/yyyy' }} - {{ event.end.dateTime | date : 'dd/MM/yyyy' }}</p>
+                    <p ng-if="!event.start.wholeDay && !event.start.manyDays">{{ event.start.dateTime | date : 'HH:mm' }}-{{ event.end.dateTime | date : 'HH:mm'  }}</p>
+                </div>
+            </md-list-item>
+        </md-list>
+    </md-card-content>
+</md-card>

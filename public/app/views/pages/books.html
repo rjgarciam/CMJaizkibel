@@ -1,0 +1,53 @@
+<md-card>
+    <md-card-content ng-init="books.getBooks()">
+        <div layout="row">
+            <md-input-container class="md-block" flex>
+                <label>Título o autor</label>
+                <input ng-model="books.searchAll" ng-change="books.getBooks()" ng-model-options="{debounce: 500}">
+            </md-input-container>
+            <div style="margin-top:10px;">
+                <md-button class="md-raised md-primary" href="/myBooks">Mis libros</md-button>
+            </div>
+        </div>
+        <md-list>
+            <p ng-if="books.books.length == 0">Lo sentimos, ningún libro coincide con el criterio de búsqueda</p>
+            <md-list-item class="md-3-line" ng-repeat="book in books.books| filter:books.searchAll track by book.numero" >
+                <div class="md-list-item-text" layout="column">
+                    <h3>{{ book.titulo }}</h3>
+                    <h4>{{ book.apellidos }}, {{ book.nombre }}</h4>
+                    <p>{{ book.lugar }}. {{ book.idioma }}</p>
+                </div>
+                <md-button class="md-icon-button" ng-if="$root.userData.library == true" aria-label="Borrar" style="margin-top:16px;" ng-click="books.editBook(book._id)">
+                    <md-icon class="material-icons" aria-label="Actualizar fecha mínima">create</md-icon>
+                </md-button>
+                <md-button ng-if="!book.enUso" class="md-icon-button" aria-label="Borrar" style="margin-top:16px;" ng-click="books.takeBook(book._id)">
+                    <md-icon class="material-icons" aria-label="Actualizar fecha mínima">move_to_inbox</md-icon>
+                </md-button>
+                <md-button ng-if="book.enUso" class="md-icon-button" ng-disabled="true" aria-label="Usuario" style="margin-top:16px;">
+                    {{ book.enUso }}
+                </md-button>
+            </md-list-item>
+            <div ng-if="books.books.length != 0">
+              <md-button class="md-raised md-primary" ng-disabled="books.currentPage == 1" ng-click="books.prevPressed()">Anterior</md-button>
+              <span class="md-subhead" >{{books.currentPage}}/{{books.numPages}}</span>
+              <md-button class="md-raised md-primary" ng-disabled="books.currentPage >= books.numPages" ng-click="books.nextPressed()">Siguiente</md-button>
+            </div>
+        </md-list>
+    </md-card-content>
+</md-card>
+
+<md-fab-speed-dial ng-if="$root.userData.library == true" md-open="false" md-direction="up" ng-class="'md-fling md-fab-bottom-right customFab'" ng-cloak>
+    <md-fab-trigger>
+        <md-button aria-label="menu" class="md-fab md-primary hue-2" >
+            <md-icon class="material-icons">menu</md-icon>
+        </md-button>
+    </md-fab-trigger>
+    <md-fab-actions>
+        <md-button aria-label="Lista de libros" class="md-fab md-raised md-mini" href="/booksTaken">
+            <md-icon class="material-icons" aria-label="Lista de libros">format_list_bulleted</md-icon>
+        </md-button>
+        <md-button aria-label="Añadir libro" class="md-fab md-raised md-mini" ng-click="books.addBook()">
+            <md-icon class="material-icons" aria-label="Añadir libro">add</md-icon>
+        </md-button>
+    </md-fab-actions>
+</md-fab-speed-dial> 

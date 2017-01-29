@@ -1,0 +1,39 @@
+<md-card>
+  <md-card-content ng-init="settings.getUsers()">
+      <h2>Lista de usuarios</h2>
+      <md-divider ></md-divider>
+          <md-list>
+              <p ng-if="settings.users.length == 0">No hay ningún usuario registrado en la base de datos</p>
+              <md-list-item class="md-3-line" ng-repeat="user in settings.users| orderBy:'name'">
+                  <div class="md-list-item-text" layout="column">
+                      <h3><b>{{ user.name }}</b> {{ user.number }}</h3>
+                      <h4>
+                          <span>{{ user.email}}</span><br>
+                          <span ng-if="user.admin">Administrador </span>
+                          <span ng-if="user.meals">Comidas </span>
+                          <!--<span ng-if="user.library">Biblioteca </span>-->
+                          <span ng-if="!user.library && !user.meals && !user.admin">No tiene ningún permiso de administrador</span>
+                      </h4>
+                      <p ng-if="user.hasDiet">Descripción de la dieta: {{ user.dietContent }}</p>
+                      <p ng-if="!user.hasDiet">No tiene régimen especial de comidas</p>
+                  </div>
+                  <md-button class="md-icon-button" ng-if="$root.userData.admin == true" aria-label="Editar usuario" style="margin-top:16px;" ng-click="settings.editUser(user._id)">
+                      <md-icon class="material-icons" aria-label="Editar usuario">create</md-icon>
+                  </md-button>
+              </md-list-item>
+          </md-list>
+          <div layout="row" layout-xs="column" layout-gt-xs-align="start end">
+              <span flex="noshrink" ng-if="settings.users.length != 0">
+                  <md-button class="md-raised md-primary" ng-disabled="settings.currentPage == 1" ng-click="settings.prevPressed()">Anterior</md-button>
+                  <span class="md-subhead" >{{settings.currentPage}}/{{settings.numPages}}</span>
+                  <md-button class="md-raised md-primary" ng-disabled="settings.currentPage >= settings.numPages" ng-click="settings.nextPressed()">Siguiente</md-button>
+              </span>
+              <span flex></span>
+              <span layout="row">
+                  <span flex></span>
+                  <md-button class="md-raised md-primary" href="/addUser">Crear nuevo</md-button>
+                  <span flex></span>
+              </span>
+          </div>
+  </md-card-content>
+</md-card>

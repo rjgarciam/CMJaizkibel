@@ -1,0 +1,28 @@
+<md-card>
+  <md-card-content ng-init="books.getBooksTaken()">
+      <h2 class="md-headline">Libros</h2>
+      <md-divider></md-divider>
+        <md-list>
+            <p ng-if="books.books.length == 0">Actualmente hay ningún libro fuera de la biblioteca</p>
+            <md-list-item class="md-3-line" ng-repeat="book in books.books">
+                <div class="md-list-item-text" layout="column">
+                    <h3>{{ book.titulo }}</h3>
+                    <h4>{{ book.apellidos }}, {{ book.nombre }}</h4>
+                    <p>{{ book.lugar }}. {{ book.idioma }}</p>
+                </div>
+                <md-button class="md-icon-button" aria-label="Borrar" style="margin-top:16px;" ng-click="books.returnBook(book._id)">
+                    <md-icon class="material-icons" aria-label="Actualizar fecha mínima">archive</md-icon>
+                </md-button>
+                <md-button class="md-icon-button" ng-disabled="true" aria-label="Usuario" style="margin-top:16px;">
+                    {{ book.enUso }}
+                </md-button>
+            </md-list-item>
+            <div ng-if="books.books.length != 0">
+              <md-button class="md-raised md-primary" ng-disabled="books.currentPage == 1" ng-click="books.prevPressed()">Anterior</md-button>
+              <span class="md-subhead" >{{books.currentPage}}/{{books.numPages}}</span>
+              <md-button class="md-raised md-primary" ng-disabled="books.currentPage >= books.numPages" ng-click="books.nextPressed()">Siguiente</md-button>
+            </div>
+        </md-list>
+
+  </md-card-content>
+</md-card>

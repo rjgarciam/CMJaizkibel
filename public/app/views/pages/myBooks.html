@@ -1,0 +1,19 @@
+<md-card>
+  <md-card-content ng-init="books.getUserBooks()">
+      <h2 class="md-headline">Mis libros</h2>
+      <md-divider></md-divider>
+      <md-list>
+          <p ng-if="books.myBooks.length == 0">Actualmente no tienes ningún libro de la biblioteca.</p>
+          <md-list-item class="md-3-line" ng-repeat="book in books.myBooks">
+              <div class="md-list-item-text" layout="column">
+                  <h3>{{ book.titulo }}</h3>
+                  <h4>{{ book.apellidos }}, {{ book.nombre }}</h4>
+                  <p>{{ book.lugar }}. {{ book.idioma }}</p>
+              </div>
+              <md-button class="md-icon-button" aria-label="Borrar" style="margin-top:16px;" ng-click="books.returnBook(book._id)">
+                  <md-icon class="material-icons" aria-label="Devolver">archive</md-icon>
+              </md-button>
+          </md-list-item>
+      </md-list>
+  </md-card-content>
+</md-card>
