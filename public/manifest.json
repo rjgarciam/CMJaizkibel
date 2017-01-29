@@ -1,6 +1,6 @@
 {  
-  "short_name": "CM Ayete",  
-  "name": "Colegio Mayor Ayete",  
+  "short_name": "CM Jaizkibel",  
+  "name": "Colegio Mayor Jaizkibel",  
   "start_url": "./?utm_source=web_app_manifest",  
   "icons": [  
     {  
@@ -25,7 +25,7 @@
     }
   ],  
   "background_color": "#FAFAFA",
-  "theme_color": "#5D4037", 
+  "theme_color": "#3F51B5", 
   "display": "standalone",  
   "orientation": "portrait"  
 }
