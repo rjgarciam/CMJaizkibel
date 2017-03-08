@@ -28,7 +28,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-/*
+
 app.use(helmet());
 
 app.use(helmet.contentSecurityPolicy({
@@ -42,7 +42,7 @@ app.use(helmet.contentSecurityPolicy({
   }
 }))
 
-*/
+
 
 require('./app/config/passport')(passport); // pass passport for configuration
 
