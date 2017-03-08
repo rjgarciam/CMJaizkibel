@@ -28,20 +28,16 @@ angular.module('mealCtrl',[])
     /*  1 */ 'Tachar la comida',
     /*  2 */ 'Tachar la cena',
     /*  3 */ 'Desayunar antes',
-    /*  4 */ 'Bocadillos en primer turno',
-    /*  5 */ 'Tupper en primer turno',
-    /*  6 */ 'Comer de Tupper',
-    /*  7 */ 'Comer de Bocadillos',
-    /*  8 */ 'Bolsa de bocadillos antes de las 13:00',
-    /*  9 */ 'Comida de primer turno',
-    /* 10 */ 'Comida de segundo turno',
-    /* 11 */ 'Cena de segundo turno',
+    /*  4 */ 'Comer de Tupper',
+    /*  5 */ 'Comida de primer turno',
+    /*  6 */ 'Comida de segundo turno',
+    /*  7 */ 'Cena de segundo turno',
   ];
 
-  vm.dayBeforeIDkeys = [0,3,4,5,6,7];
+  vm.dayBeforeIDkeys = [0,3,4];
   vm.breakfastRequests = [0,3];
-  vm.lunchRequests = [1,4,5,6,7,8,9,10];
-  vm.dinnerRequests = [2,11];
+  vm.lunchRequests = [1,4,5,6];
+  vm.dinnerRequests = [2,7];
 
   vm.selectedRequest = 2;
 
