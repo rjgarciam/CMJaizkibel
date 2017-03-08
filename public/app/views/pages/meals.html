@@ -9,7 +9,7 @@
                         <input name="clientName" type="number" required ng-model="meals.mealAsked.id">
                     </md-input-container>
                     -->
-                    <md-input-container flex="60">
+                    <md-input-container flex="60" flex-xs="100">
                         <label>Cambio</label>
                         <md-select name="selectChange" ng-model="meals.mealAsked.change" required>
                             <md-option ng-repeat="request in meals.possibleRequests" ng-value="{{ $index }}">
@@ -21,7 +21,7 @@
                             </div>
                     </md-input-container>
 
-                    <md-checkbox flex ng-model="meals.repeat" aria-label="Repetir">Repetir cambio</md-checkbox>
+                    <md-checkbox hide-xs flex ng-model="meals.repeat" aria-label="Repetir">Repetir cambio</md-checkbox>
                 </div>
 
 
@@ -34,6 +34,8 @@
                     </md-select>
                     <p class="validation-messages">El número máximo de repeticiones en un solo pedido es de 15</p>
                 </md-input-container>
+
+                <md-checkbox hide-gt-xs flex ng-model="meals.repeat" aria-label="Repetir">Repetir cambio</md-checkbox>
 
                 <div ng-if="meals.screenSize >= 376" layout="row" layout-align="center center">
                     <div style="text-align:center">
