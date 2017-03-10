@@ -29,6 +29,7 @@ app.use(function(req, res, next) {
 });
 
 
+
 app.use(helmet());
 
 app.use(helmet.contentSecurityPolicy({
@@ -38,10 +39,9 @@ app.use(helmet.contentSecurityPolicy({
 		fontSrc: ['https://netdna.bootstrapcdn.com','https://fonts.gstatic.com'],
 		imgSrc: ["'self'", 'data:'],
 		connectSrc: ["'self'", 'https://www.googleapis.com'],
-    scriptSrc: ["'self'"],
+    scriptSrc: ["'self'", "'unsafe-eval'"],
   }
 }))
-
 
 
 require('./app/config/passport')(passport); // pass passport for configuration
@@ -55,7 +55,7 @@ mongoose.connect(db);
 
 // set static files location
 //Commented as static files are being served through NGINX
-//app.use(express.static(__dirname + '/public/'));
+app.use(express.static(__dirname + '/public/'));
 
 app.use(passport.initialize());
 
