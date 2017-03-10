@@ -166,7 +166,6 @@ angular.module('settingsCtrl', ['ngMaterial',])
       var promiseArray = [];
       var user = {};
       usersList.map(function(e){
-        user.email = e[0].toLowerCase();
         var i;
         for(i=3;i<5;++i){
           if(e[i]==="no"){
@@ -176,8 +175,8 @@ angular.module('settingsCtrl', ['ngMaterial',])
           }
         }
         user = {
-          name: e[1],
-          email: e[0].toLowerCase(),
+          name: e[0],
+          email: e[1].toLowerCase(),
           number: e[2],
           admin: e[3],
           meals: e[4],
