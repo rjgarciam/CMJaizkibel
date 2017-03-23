@@ -24,20 +24,18 @@ angular.module('mealCtrl',[])
   };
 
   vm.possibleRequests = [
-    /*  0 */ 'Tachar el desayuno' ,
-    /*  1 */ 'Tachar la comida',
-    /*  2 */ 'Tachar la cena',
-    /*  3 */ 'Desayunar antes',
-    /*  4 */ 'Comer de Tupper',
-    /*  5 */ 'Comida de primer turno',
-    /*  6 */ 'Comida de segundo turno',
-    /*  7 */ 'Cena de segundo turno',
+    /*  0 */ 'Tachar la comida',
+    /*  1 */ 'Tachar la cena',
+    /*  2 */ 'Comer de Tupper',
+    /*  3 */ 'Comida pronto',
+    /*  4 */ 'Comida tarde',
+    /*  5 */ 'Cena tarde',
   ];
 
-  vm.dayBeforeIDkeys = [0,3,4];
-  vm.breakfastRequests = [0,3];
-  vm.lunchRequests = [1,4,5,6];
-  vm.dinnerRequests = [2,7];
+  vm.dayBeforeIDkeys = [2];
+  vm.breakfastRequests = [];
+  vm.lunchRequests = [0,2,3,4];
+  vm.dinnerRequests = [1,5];
 
   vm.selectedRequest = 2;
 
