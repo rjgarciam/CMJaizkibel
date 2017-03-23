@@ -44,7 +44,6 @@ angular.module('mealCtrl',[])
   vm.mealAsked.date = new Date();
   vm.mealAsked.reqDate = new Date();  
   vm.mealAsked.doRepeat = 0;
-  console.log($rootScope.userData);
   vm.mealAsked.hasDiet = $rootScope.userData.hasDiet;
   vm.mealAsked.dietContent = $rootScope.userData.dietContent;
   vm.mealAsked.name = $rootScope.userData.name;
@@ -84,8 +83,6 @@ angular.module('mealCtrl',[])
       }
     }else{
       //Create the meal with special response to errors or success
-      console.log("hi!");
-      console.log(vm.mealAsked);
       Meal.create(vm.mealAsked).then(function succesCallback(){
           vm.processing = false;
           vm.mealButtontext = 'Enviado';
@@ -162,7 +159,6 @@ angular.module('mealCtrl',[])
       .success(function(data){
         vm.processing = false;
         vm.requests = data;
-        console.log(data);
       });
     Meal.inDay(d).success(function(data){
       data.map(function(e){
@@ -188,14 +184,11 @@ angular.module('mealCtrl',[])
   };
 
   vm.checkDiets = function(meal){
-    console.log("Kaixo!");
     Meal.hasDiet(meal.id)
       .success(function(data){
         //To avoid undefined warnings
-        console.log(data);
         if(data[0]){
           if(data[0].hasDiet){
-            console.log(data[0]);
             return meal.dietMeal = data[0].dietContent;
           }
         }
