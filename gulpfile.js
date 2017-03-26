@@ -20,7 +20,7 @@ gulp.task('generate-service-worker', function(callback) {
 
   swPrecache.write(path.join(rootDir, 'sw.js'), {
     staticFileGlobs: [
-    									rootDir + '/install-sw.js',
+    									//rootDir + '/install-sw.js',
     									rootDir + '/{app,img}/**/*.{js,html,css,png,jpg,gif}',
     									rootDir + '/assets/img/*.{png,jpg,gif}',
     									rootDir + '/assets/css/style.min.css',
