@@ -164,9 +164,9 @@ angular.module('mealCtrl',[])
       data.map(function(e){
         if(vm.dayBeforeIDkeys.indexOf(e.change) !== -1){
           if(e.moment == 1){
-            e.change = 1;
+            e.change = 0;
           }else if(e.moment == 2){
-            e.change = 2;
+            e.change = 1;
           }
           vm.requests.push(e);
         }
