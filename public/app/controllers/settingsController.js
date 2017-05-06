@@ -17,6 +17,7 @@ angular.module('settingsCtrl', ['ngMaterial',])
     number: '',
     admin: false,
     meals: false,
+    lockMeals: false,
     //library: false,
     hasDiet: false,
     dietContent: '',
@@ -180,6 +181,7 @@ angular.module('settingsCtrl', ['ngMaterial',])
           number: e[2],
           admin: e[3],
           meals: e[4],
+          lockMeals: e[5],
           //library: e[4],
         };
         if(e[5] === ""){

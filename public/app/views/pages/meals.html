@@ -117,7 +117,7 @@
         <md-button aria-label="Lista de comidas" class="md-fab md-raised md-mini" href="/mealrequests">
             <md-icon class="material-icons" aria-label="Lista de comidas">format_list_bulleted</md-icon>
         </md-button>
-        <md-button aria-label="Actualizar fecha mínima" class="md-fab md-raised md-mini" ng-click="meals.NewDate()">
+        <md-button ng-if="$root.userData.lockMeals == true" aria-label="Actualizar fecha mínima" class="md-fab md-raised md-mini" ng-click="meals.NewDate()">
             <md-icon class="material-icons" aria-label="Actualizar fecha mínima">update</md-icon>
         </md-button>
     </md-fab-actions>

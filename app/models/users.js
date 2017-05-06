@@ -4,13 +4,14 @@ var Schema       = mongoose.Schema;
 
 // User schema 
 var UserSchema   = new Schema({
-	email:   {type:String},
-	name:    {type:String},
-	number:  {type:String},
-	admin:   {type:Boolean},
-	meals:   {type:Boolean},
-	library: {type:Boolean},
-	hasDiet: {type:Boolean},
+	email:       {type:String},
+	name:        {type:String},
+	number:      {type:String},
+	admin:       {type:Boolean},
+	meals:       {type:Boolean},
+	lockMeals:   {type: Boolean},
+	library:     {type:Boolean},
+	hasDiet:     {type:Boolean},
 	dietContent: {type:String},
 
 });

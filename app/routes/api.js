@@ -36,6 +36,7 @@ module.exports = function(app, express, passport) {
                               email:defaultUser.mail,
                               admin:defaultUser.admin,
                               meals:defaultUser.meals,
+                              lockMeals:defaultUser.lockMeals,
                               library:defaultUser.library,
                               hasDiet:defaultUser.hasDiet,
                               dietContent:defaultUser.dietContent,
@@ -58,6 +59,7 @@ module.exports = function(app, express, passport) {
                                   email: userData.email,
                                   admin: userData.admin,
                                   meals: userData.meals,
+                                  lockMeals: userData.lockMeals,
                                   library: userData.library,
                                   hasDiet: userData.hasDiet,
                                   dietContent: userData.dietContent,
@@ -99,6 +101,7 @@ module.exports = function(app, express, passport) {
                                   email: req.decoded.email,
                                   admin: req.decoded.admin,
                                   meals: req.decoded.meals,
+                                  lockMeals: req.decoded.lockMeals,
                                   library: req.decoded.library,
                                   hasDiet: req.decoded.hasDiet,
                                   dietContent: req.decoded.dietContent,
@@ -270,6 +273,7 @@ module.exports = function(app, express, passport) {
       user.number = req.body.number;
       user.admin = req.body.admin;
       user.meals = req.body.meals;
+      user.lockMeals = req.body.lockMeals;
       user.library = req.body.library;
       user.hasDiet = req.body.hasDiet;
       user.dietContent = req.body.dietContent;
@@ -327,6 +331,7 @@ module.exports = function(app, express, passport) {
         number: req.body.number,
         admin: req.body.admin,
         meals: req.body.meals,
+        lockMeals: req.body.lockMeals,
         library: req.body.library,
         hasDiet: req.body.hasDiet,
         dietContent: req.body.dietContent,

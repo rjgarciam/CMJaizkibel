@@ -10,9 +10,10 @@
                       <h4>
                           <span>{{ user.email}}</span><br>
                           <span ng-if="user.admin">Administrador </span>
-                          <span ng-if="user.meals">Comidas </span>
+                          <span ng-if="user.meals">Ver comidas </span>
+                          <span ng-if="user.lockMeals">Bloquear comidas </span>
                           <!--<span ng-if="user.library">Biblioteca </span>-->
-                          <span ng-if="!user.library && !user.meals && !user.admin">No tiene ningún permiso de administrador</span>
+                          <span ng-if="!user.library && !user.meals && !user.lockMeals && !user.admin">No tiene ningún permiso de administrador</span>
                       </h4>
                       <p ng-if="user.hasDiet">Descripción de la dieta: {{ user.dietContent }}</p>
                       <p ng-if="!user.hasDiet">No tiene régimen especial de comidas</p>
