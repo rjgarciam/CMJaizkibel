@@ -7,6 +7,8 @@ var Sport      = require('../models/sports');
 var LastDate   = require('../models/lastDate');
 var jwt        = require('jsonwebtoken');
 var config     = require('../config/config');
+var mongoXlsx  = require('mongo-xlsx');
+var fs         = require('fs');
 
 // keys and data
 // ================
@@ -20,6 +22,24 @@ var GCalendarAPI = process.env.GCALKEY || config.gCalApiKey;
 module.exports = function(app, express, passport) {
 
   var apiRouter = express.Router();
+
+  apiRouter.route('/books/downloadxls')
+    .get(function(req, res) {
+      Book.find(function(err, books) {
+        if (err){
+          return err;
+        }else{
+          var model = mongoXlsx.buildDynamicModel(books);
+          mongoXlsx.mongoData2Xlsx(books, model, function(err, books) {
+            //console.log('File saved at:', books.fullPath);
+            res.download(books.fullPath, 'biblioteca.xlsx', function(err){
+              fs.unlink(books.fullPath)
+            });
+          });
+          //return res.json(books);
+        }
+      });
+    });
 
 
   apiRouter.get('/auth/google', passport.authenticate('google', { scope: ['profile','email'],prompt : "select_account" }));
