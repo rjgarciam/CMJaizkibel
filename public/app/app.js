@@ -88,4 +88,4 @@ angular.module('cmjaizkibel', ['ngAnimate', 'ngMessages', 'app.routes', 'AuthSer
       element.bind('change', onChangeHandler);
     }
   };
-}); 
+});

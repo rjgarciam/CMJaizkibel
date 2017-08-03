@@ -6,17 +6,14 @@ angular.module('EventsService', [])
   var EventsFactory = {};
 
   // get all events from given calendar
-  EventsFactory.mainCal = function(calendarURL,APIKey) {
+  EventsFactory.mainCal = function(pageToken) {
     var today = new Date();
     //var maxDay = new Date(new Date().setDate(new Date().getDate()+7));
     var config = { params:{
-                key:  APIKey,
-                timeMin: today,
-                singleEvents: true,
-                orderBy: 'startTime',
-                maxResults: 10,
+                minTime: today,
+                pageToken: pageToken,
               }};
-    return $http.get('https://www.googleapis.com/calendar/v3/calendars/' + calendarURL + '/events', config);
+    return $http.get('/api/events/', config);
   };
 
   return EventsFactory;

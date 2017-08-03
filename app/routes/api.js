@@ -9,6 +9,7 @@ var jwt        = require('jsonwebtoken');
 var config     = require('../config/config');
 var mongoXlsx  = require('mongo-xlsx');
 var fs         = require('fs');
+var request    = require('request');
 
 // keys and data
 // ================
@@ -61,7 +62,6 @@ module.exports = function(app, express, passport) {
                               hasDiet:defaultUser.hasDiet,
                               dietContent:defaultUser.dietContent,
                               name:defaultUser.name,
-                              calendarAPI: GCalendarAPI,
                               },
                               secret,{
                                 expiresIn: 11520 // expires in 8 days
@@ -84,7 +84,6 @@ module.exports = function(app, express, passport) {
                                   hasDiet: userData.hasDiet,
                                   dietContent: userData.dietContent,
                                   name: userData.name,
-                                  calendarAPI: GCalendarAPI,
                                   },
                                   secret,{
                                     expiresIn: "15d" // expires in 8 days
@@ -126,7 +125,6 @@ module.exports = function(app, express, passport) {
                                   hasDiet: req.decoded.hasDiet,
                                   dietContent: req.decoded.dietContent,
                                   name: req.decoded.name,
-                                  calendarAPI: GCalendarAPI,
                                   },
                                   secret,{
                                     expiresIn: "15d" // expires in 8 days
@@ -714,6 +712,33 @@ module.exports = function(app, express, passport) {
         }
       });
     });
+
+  apiRouter.route('/events')
+    .get(function(req, res) {
+      // var query = {req.query.field};
+      var today = req.query.minTime;
+      var pageToken = req.query.pageToken;
+      var calendarURL = 'ayete.es_pu5p3ltp22t89tvn783vuoph84@group.calendar.google.com';
+      var url = 'https://www.googleapis.com/calendar/v3/calendars/' + calendarURL + '/events';
+      var config = {
+                  key: GCalendarAPI,
+                  timeMin: today,
+                  singleEvents: true,
+                  orderBy: 'startTime',
+                  maxResults: 10,
+                };
+      if(pageToken){
+        config.pageToken = pageToken;
+      }
+      request({url:url, qs:config}, function (error, response, body) {
+        if (error){
+          return error;
+        }else{
+          return res.json(body);
+        }
+      });
+    });
+
 
     // test route to make sure everything is working 
   apiRouter.get('/', function(req, res) {

@@ -19,7 +19,6 @@ angular.module('AuthService', ['ngCookies','angular-jwt'])
         userData.lockMeals = decoded.lockMeals;
         userData.library = decoded.library;
         userData.admin = decoded.admin;
-        userData.GCalendarAPI = decoded.calendarAPI;
         userData.hasDiet = decoded.hasDiet;
         userData.dietContent = decoded.dietContent;
         userData.name = decoded.name;

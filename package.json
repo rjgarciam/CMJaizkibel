@@ -21,7 +21,8 @@
     "mongoose": "^4.5.3",
     "morgan": "^1.7.0",
     "passport": "^0.3.2",
-    "passport-google-oauth": "^1.0.0"
+    "passport-google-oauth": "^1.0.0",
+    "request": "^2.81.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",

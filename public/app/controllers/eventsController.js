@@ -7,15 +7,20 @@ angular.module('eventsCtrl', ['ngMaterial'])
     "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
   ];
 
+  vm.pageToken;
+
   vm.list = [];
 
   vm.getEvents = function(){
-    return Events.mainCal('ayete.es_pu5p3ltp22t89tvn783vuoph84@group.calendar.google.com',$rootScope.userData.GCalendarAPI)
+    return Events.mainCal(vm.pageToken)
             .then(function(data){
-              data.data.items.map(function(e){
+              var res = angular.fromJson(data.data);
+              vm.pageToken = res.nextPageToken;
+              res.items.map(function(e){
                 e = prepareDates(e);
               });
-              vm.list = data.data.items;
+              Array.prototype.push.apply(vm.list,res.items)
+              //vm.list = res.items;
             });
   }
 
