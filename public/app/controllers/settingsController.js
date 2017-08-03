@@ -1,6 +1,6 @@
 angular.module('settingsCtrl', ['ngMaterial',])
 
-.controller('SettingsController', function($rootScope, $location, Settings,$window,$mdDialog, $q) {
+.controller('SettingsController', function($rootScope, $location, Settings,$window,$mdDialog, $q, Meal) {
   var vm = this;
 
   vm.settingsData = {
@@ -58,6 +58,18 @@ angular.module('settingsCtrl', ['ngMaterial',])
     });
     vm.isUpdate = true;
     vm.sendButtonText = 'Actualizar';
+  }
+
+  vm.dateBack = function(collection){
+    vm.processing = true;
+    vm.message = '';
+    date = new Date(new Date().setDate(new Date().getDate()));
+    date.setHours(0,0,0,0);
+    Meal.updateCurrentDate(date)
+      .success(function(data) {
+        vm.processing = false;
+        vm.loadSettingsData();
+      });
   }
 
   vm.openDial = function(execFunction, collection, event) {

@@ -20,6 +20,13 @@
                 </div>
             </md-list-item>
 
+            <md-list-item ng-click="settings.openDial(settings.dateBack,'LastDate', $event)" class="noright md-2-line">
+                <div class="md-list-item-text" layout="column">
+                    <h3>Volver atrás la última fecha de comidas</h3>
+                    <p>La última fecha actual es el {{settings.settingsData.lastMealsDate | date:'dd/MM/yyyy'}}</p>
+                </div>
+            </md-list-item>
+
             <md-list-item ng-click="settings.openDial(settings.clearAll,'LastDate', $event)" class="noright md-2-line">
                 <div class="md-list-item-text" layout="column">
                     <h3>Resetear la última fecha de comidas</h3>
