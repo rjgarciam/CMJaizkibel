@@ -228,4 +228,18 @@ angular.module('mealCtrl',[])
         vm.currentDate = date;
       });
   };
+
+  vm.confirmDate = function(event) {
+    var confirm = $mdDialog.confirm()
+          .title('¿Estás seguro?')
+          .textContent('Se cerrará el parte de comidas para hoy.')
+          .ariaLabel('Confirmar')
+          .ok('Continuar')
+          .cancel('Cancelar')
+          .targetEvent(event);
+    $mdDialog.show(confirm).then(function() {
+      vm.NewDate();
+    });
+  };
+
 });
