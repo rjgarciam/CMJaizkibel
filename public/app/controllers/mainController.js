@@ -17,7 +17,6 @@ angular.module('mainCtrl', ['ngMaterial',])
   }
 
   $rootScope.userData = Auth;
-  console.log($rootScope.userData);
 
   vm.logOut = function(){
     Auth.logOut();
