@@ -58,15 +58,15 @@ module.exports = function(app, express, passport) {
                               admin:defaultUser.admin,
                               meals:defaultUser.meals,
                               lockMeals:defaultUser.lockMeals,
-                              library:defaultUser.library,
+                              //library:defaultUser.library,
                               hasDiet:defaultUser.hasDiet,
-                              dietContent:defaultUser.dietContent,
+                              //dietContent:defaultUser.dietContent,
                               name:defaultUser.name,
                               },
                               secret,{
                                 expiresIn: 11520 // expires in 8 days
                               });
-        res.cookie('cmayete', token);
+        res.cookie('cmgoimendi', token);
         res.redirect('/meals');
       }else{
         var userData;
@@ -80,16 +80,16 @@ module.exports = function(app, express, passport) {
                                   admin: userData.admin,
                                   meals: userData.meals,
                                   lockMeals: userData.lockMeals,
-                                  library: userData.library,
+                                  //library: userData.library,
                                   hasDiet: userData.hasDiet,
-                                  dietContent: userData.dietContent,
+                                  //dietContent: userData.dietContent,
                                   name: userData.name,
                                   },
                                   secret,{
                                     expiresIn: "15d" // expires in 8 days
                                   });
 
-            res.cookie('cmayete', token);
+            res.cookie('cmgoimendi', token);
             res.redirect('/meals');  
           }else{
             res.redirect('/login#error');
@@ -105,7 +105,7 @@ module.exports = function(app, express, passport) {
     if (token) {
       jwt.verify(token, secret, function(err, decoded) {      
         if (err) {
-          res.clearCookie('cmayete');
+          res.clearCookie('cmgoimendi');
           res.status(403).send({ 
             success: false, 
             message: 'Auth error.', 
@@ -121,19 +121,19 @@ module.exports = function(app, express, passport) {
                                   admin: req.decoded.admin,
                                   meals: req.decoded.meals,
                                   lockMeals: req.decoded.lockMeals,
-                                  library: req.decoded.library,
+                                  //library: req.decoded.library,
                                   hasDiet: req.decoded.hasDiet,
-                                  dietContent: req.decoded.dietContent,
+                                  //dietContent: req.decoded.dietContent,
                                   name: req.decoded.name,
                                   },
                                   secret,{
                                     expiresIn: "15d" // expires in 8 days
                                   });
 
-            res.cookie('cmayete', token);
+            res.cookie('cmgoimendi', token);
             next();
           }else{
-            res.clearCookie('cmayete');
+            res.clearCookie('cmgoimendi');
             return res.status(403).send({ 
               success: false, 
               message: 'Invalid User' 
@@ -292,9 +292,9 @@ module.exports = function(app, express, passport) {
       user.admin = req.body.admin;
       user.meals = req.body.meals;
       user.lockMeals = req.body.lockMeals;
-      user.library = req.body.library;
+      user.library = false //req.body.library;
       user.hasDiet = req.body.hasDiet;
-      user.dietContent = req.body.dietContent;
+      user.dietContent = 'dieta' //req.body.dietContent;
       user.name = req.body.name;
       user.save(function(err){
         if(err){
@@ -350,9 +350,9 @@ module.exports = function(app, express, passport) {
         admin: req.body.admin,
         meals: req.body.meals,
         lockMeals: req.body.lockMeals,
-        library: req.body.library,
+        library: false, //req.body.library;
         hasDiet: req.body.hasDiet,
-        dietContent: req.body.dietContent,
+        dietContent: 'dieta', //req.body.dietContent;
         name: req.body.name,
       },function(err, data) {
         if (err){

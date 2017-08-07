@@ -4,9 +4,9 @@ angular.module('AuthService', ['ngCookies','angular-jwt'])
 
   var vm = this;
 
-  var userData = {isLogged:false,email:'',meals:false,library:false,admin:false,number:0,hasDiet:false,dietContent:'',name:''};
+  var userData = {isLogged:false,email:'',meals:false,library:false,admin:false,number:0,hasDiet:false,dietContent:'dieta',name:''};
 
-  var token = $cookies.get('cmayete');
+  var token = $cookies.get('cmgoimendi');
   
   if(token){
     var decoded = jwtHelper.decodeToken(token);
@@ -17,16 +17,16 @@ angular.module('AuthService', ['ngCookies','angular-jwt'])
         userData.email = decoded.email;
         userData.meals = decoded.meals;
         userData.lockMeals = decoded.lockMeals;
-        userData.library = decoded.library;
+        //userData.library = decoded.library;
         userData.admin = decoded.admin;
         userData.hasDiet = decoded.hasDiet;
-        userData.dietContent = decoded.dietContent;
+        //userData.dietContent = decoded.dietContent;
         userData.name = decoded.name;
     }
   }
 
   userData.logOut = function(){
-    $cookies.remove('cmayete');
+    $cookies.remove('cmgoimendi');
   };
 
   return userData;
@@ -36,7 +36,7 @@ angular.module('AuthService', ['ngCookies','angular-jwt'])
 .factory('authInterceptor', function ($rootScope, $q, $cookies) {
   return {
     request: function (config) {
-      var token = $cookies.get('cmayete');
+      var token = $cookies.get('cmgoimendi');
       config.headers = config.headers || {};
       if (token) {
         config.headers['x-access-token'] = token;

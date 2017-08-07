@@ -25,12 +25,12 @@
                 -->
                 <md-checkbox flex ng-checked="settings.isChecked('hasDiet')" ng-click="settings.toggle('hasDiet')" aria-label="Dieta">Dieta</md-checkbox>
             </div>
-
+            <!--
             <md-input-container ng-if="settings.user.hasDiet">
                 <label>Contenido de la dieta</label>
                 <input name="clientName" type="text" ng-model="settings.user.dietContent">
             </md-input-container>
-
+            -->
             <md-button type="submit" id="addBookButton" class="md-raised" ng-class="'md-primary'" aria-label="Enviar">
                 <span>{{settings.sendButtonText}}</span>
             </md-button>

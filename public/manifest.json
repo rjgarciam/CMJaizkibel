@@ -1,6 +1,6 @@
 {  
-  "short_name": "CM Jaizkibel",  
-  "name": "Colegio Mayor Jaizkibel",  
+  "short_name": "CM Goimendi",  
+  "name": "Colegio Mayor Goimendi",  
   "start_url": "./?utm_source=web_app_manifest",  
   "icons": [  
     {  
@@ -25,7 +25,7 @@
     }
   ],  
   "background_color": "#FAFAFA",
-  "theme_color": "#3F51B5", 
+  "theme_color": "#7F8A00", 
   "display": "standalone",  
   "orientation": "portrait"  
 }

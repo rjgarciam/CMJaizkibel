@@ -24,18 +24,22 @@ angular.module('mealCtrl',[])
   };
 
   vm.possibleRequests = [
-    /*  0 */ 'Tachar la comida',
-    /*  1 */ 'Tachar la cena',
-    /*  2 */ 'Comer de Tupper',
-    /*  3 */ 'Comida pronto',
-    /*  4 */ 'Comida tarde',
-    /*  5 */ 'Cena tarde',
+    /*  0 */ 'Como a las 13:00',
+    /*  1 */ 'No como',
+    /*  2 */ 'Como a las 15:15',
+    /*  3 */ 'No ceno',
+    /*  4 */ 'Ceno a las 22:00',
+    /*  5 */ 'No desayuno',
+    /*  6 */ 'Desayuno 7:15',
+    /*  7 */ 'Bocadillos a las 11:30',
+    /*  8 */ 'Bocadillos en desayuno a las 7:15',
+    /*  9 */ 'Bocadillos en desayuno a las 8:15',
   ];
 
-  vm.dayBeforeIDkeys = [2];
-  vm.breakfastRequests = [];
-  vm.lunchRequests = [0,2,3,4];
-  vm.dinnerRequests = [1,5];
+  vm.dayBeforeIDkeys = [5,6,8,9];
+  vm.breakfastRequests = [5,6];
+  vm.lunchRequests = [0,1,2,7,8,9];
+  vm.dinnerRequests = [3,4];
 
   vm.selectedRequest = 2;
 
@@ -105,6 +109,7 @@ angular.module('mealCtrl',[])
   }
 
   vm.verifyMeal = function(){
+    console.log(vm.mealAsked);
     vm.mealAsked.date.setHours(0,0,0,0);
     vm.mealAsked.reqDate = angular.copy(vm.mealAsked.date);
     if(vm.dayBeforeIDkeys.indexOf(vm.mealAsked.change) !== -1){
@@ -125,6 +130,7 @@ angular.module('mealCtrl',[])
       }
     }
     vm.addMealMoment(vm.mealAsked);
+    console.log(vm.mealAsked);
     return true;
   }
 
@@ -164,9 +170,9 @@ angular.module('mealCtrl',[])
       data.map(function(e){
         if(vm.dayBeforeIDkeys.indexOf(e.change) !== -1){
           if(e.moment == 1){
-            e.change = 0;
-          }else if(e.moment == 2){
             e.change = 1;
+          }else if(e.moment == 2){
+            e.change = 3;
           }
           vm.requests.push(e);
         }

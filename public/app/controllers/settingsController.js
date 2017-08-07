@@ -20,7 +20,7 @@ angular.module('settingsCtrl', ['ngMaterial',])
     lockMeals: false,
     //library: false,
     hasDiet: false,
-    dietContent: '',
+    //dietContent: '',
   };
 
   vm.currentPage = 1;
@@ -200,7 +200,7 @@ angular.module('settingsCtrl', ['ngMaterial',])
           user.hasDiet = false;
         }else{
           user.hasDiet = true;
-          user.dietContent = e[5];
+          //user.dietContent = e[5];
         }
         promiseArray.push(Settings.create(angular.copy(user)));
       });

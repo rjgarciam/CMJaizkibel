@@ -1,5 +1,5 @@
-#CMJaizkibelApp
+#CMGoimendiApp
 
-Web app for meals management at Colegio Mayor Jaizkibel
+Web app for meals management at Colegio Mayor Goimendi
 
 Based on CMAyeteApp
