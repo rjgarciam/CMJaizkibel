@@ -2,7 +2,7 @@
 <head>
   <meta charset="UTF-8">
   <meta lang="es">
-  <title>CM Jaizkibel</title>
+  <title>CM Goimendi</title>
 
   <!-- FOR ANGULAR ROUTING -->
   <base href="/">
@@ -22,7 +22,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   -->
   <!-- Make the app title different than the page title. -->
-  <meta name="apple-mobile-web-app-title" content="CM Jaizkibel">
+  <meta name="apple-mobile-web-app-title" content="CM Goimendi">
   <!-- Configure the status bar. -->
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <!-- Disable automatic phone number detection. -->
@@ -61,7 +61,6 @@
   <script src="../../assets/libs/papaparse/papaparse.min.js"></script>
   <script src="../../assets/libs/angular-messages/angular-messages.min.js"></script>
   <script src="../../assets/svg-assets-cache.js"></script>
-
   <script src="../../dist/app.js"></script>
 
 
@@ -89,12 +88,12 @@
   <!-- load bootstrap from CDN and custom CSS -->
   <link rel="stylesheet" href="assets/css/style.min.css">
 </head>
-<body ng-app="cmjaizkibel" ng-controller="MainController as main" ng-class="{landing: !userData.isLogged, normal:userData.isLogged}" ng-cloak layout="column">
+<body ng-app="cmgoimendi" ng-controller="MainController as main" ng-class="{landing: !userData.isLogged, normal:userData.isLogged}" ng-cloak layout="column">
   <!-- NAVBAR -->
   <md-toolbar ng-if="userData.isLogged">
     <div class="md-toolbar-tools">
       <h2>
-        <span>C.M. Jaizkibel</span>
+        <span>C.M. Goimendi</span>
       </h2>
       <span flex></span>
       <a href="#" ng-click="main.logOut()"><md-button>Cerrar Sesión</md-button></a>
@@ -119,7 +118,7 @@
     </div>
   </main>
 
-<script src="../../install-sw.js?1703271"></script>
+<script src="../../install-sw.js?1708071800"></script>
 
 </body>
 </html>
