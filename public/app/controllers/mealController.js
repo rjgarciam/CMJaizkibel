@@ -51,57 +51,57 @@ angular.module('mealCtrl',[])
 
   // Ask for a new meal change
   vm.askMeal = function() {
-  vm.processing = true;
-  vm.mealButtontext = '';
-  if(vm.verifyMeal()){
-    if(vm.repeat){
-      vm.pushArray = true;
-      var promiseArray = [];
-      var i=0;
-      while(vm.mealAsked.date <= vm.mealAsked.endDate && promiseArray.length < 15){
-        promiseArray.push(Meal.create(angular.copy(vm.mealAsked)));
-        vm.mealAsked.date = new Date(vm.mealAsked.date.setDate(vm.mealAsked.date.getDate()+Number(vm.mealAsked.doRepeat)));
-        vm.mealAsked.reqDate = new Date(vm.mealAsked.reqDate.setDate(vm.mealAsked.reqDate.getDate()+Number(vm.mealAsked.doRepeat)));
-        if(!vm.verifyMeal()){
-          vm.pushArray = false;
+    vm.processing = true;
+    vm.mealButtontext = '';
+    if(vm.verifyMeal()){
+      if(vm.repeat){
+        vm.pushArray = true;
+        var promiseArray = [];
+        var i=0;
+        while(vm.mealAsked.date <= vm.mealAsked.endDate && promiseArray.length < 15){
+          promiseArray.push(Meal.create(angular.copy(vm.mealAsked)));
+          vm.mealAsked.date = new Date(vm.mealAsked.date.setDate(vm.mealAsked.date.getDate()+Number(vm.mealAsked.doRepeat)));
+          vm.mealAsked.reqDate = new Date(vm.mealAsked.reqDate.setDate(vm.mealAsked.reqDate.getDate()+Number(vm.mealAsked.doRepeat)));
+          if(!vm.verifyMeal()){
+            vm.pushArray = false;
+          }
         }
-      }
-      if(!vm.pushArray){
-        $q.all(promiseArray)
-        .then(
-          function () {
+        if(!vm.pushArray){
+          $q.all(promiseArray)
+          .then(
+            function () {
+              vm.processing = false;
+              vm.mealButtontext = 'Enviado';
+              vm.myMeals();
+            },
+            function () {
+              vm.processing = false;
+              vm.mealButtontext = 'Error';
+              vm.mealError = true;
+            }
+          );
+        }
+      }else{
+        //Create the meal with special response to errors or success
+        Meal.create(vm.mealAsked).then(function succesCallback(){
             vm.processing = false;
             vm.mealButtontext = 'Enviado';
             vm.myMeals();
-          },
-          function () {
+        },function errorCallback(){
             vm.processing = false;
             vm.mealButtontext = 'Error';
             vm.mealError = true;
-          }
-        );
+        });
       }
     }else{
-      //Create the meal with special response to errors or success
-      Meal.create(vm.mealAsked).then(function succesCallback(){
-          vm.processing = false;
-          vm.mealButtontext = 'Enviado';
-          vm.myMeals();
-      },function errorCallback(){
-          vm.processing = false;
-          vm.mealButtontext = 'Error';
-          vm.mealError = true;
-      });
+      vm.mealButtontext = 'Error';
+      vm.mealError = true;
     }
-  }else{
-    vm.mealButtontext = 'Error';
-    vm.mealError = true;
-  }
-  // Get the button back to normal  
-  $timeout(function(){
-  vm.mealButtontext = 'Enviar';
-  vm.mealError = false;
-  },3000);
+    // Get the button back to normal  
+    $timeout(function(){
+    vm.mealButtontext = 'Enviar';
+    vm.mealError = false;
+    },3000);
   }
 
   vm.verifyMeal = function(){

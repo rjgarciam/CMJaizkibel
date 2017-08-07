@@ -194,17 +194,6 @@ self.addEventListener('fetch', function(event) {
       shouldRespond = urlsToCacheKeys.has(url);
     }
 
-    // If shouldRespond is still false, check to see if this is a navigation
-    // request, and if so, whether the URL matches navigateFallbackWhitelist.
-    var navigateFallback = '/offline';
-    if (!shouldRespond &&
-        navigateFallback &&
-        (event.request.mode === 'navigate') &&
-        isPathWhitelisted([], event.request.url)) {
-      url = new URL(navigateFallback, self.location).toString();
-      shouldRespond = urlsToCacheKeys.has(url);
-    }
-
     // If shouldRespond was set to true at any point, then call
     // event.respondWith(), using the appropriate cache key.
     if (shouldRespond) {
