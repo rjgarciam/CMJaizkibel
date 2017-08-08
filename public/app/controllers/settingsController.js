@@ -196,7 +196,7 @@ angular.module('settingsCtrl', ['ngMaterial',])
           lockMeals: e[5],
           //library: e[4],
         };
-        if(e[5] === ""){
+        if(e[6] === ""){
           user.hasDiet = false;
         }else{
           user.hasDiet = true;
