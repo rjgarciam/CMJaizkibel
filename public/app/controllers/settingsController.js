@@ -180,7 +180,7 @@ angular.module('settingsCtrl', ['ngMaterial',])
       var user = {};
       usersList.map(function(e){
         var i;
-        for(i=3;i<5;++i){
+        for(i=3;i<6;++i){
           if(e[i]==="no"){
             e[i] = false;
           }else{
