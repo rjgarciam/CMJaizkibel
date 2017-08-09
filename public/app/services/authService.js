@@ -6,7 +6,7 @@ angular.module('AuthService', ['ngCookies','angular-jwt'])
 
   var userData = {isLogged:false,email:'',meals:false,library:false,admin:false,number:0,hasDiet:false,dietContent:'',name:''};
 
-  var token = $cookies.get('cmayete');
+  var token = $cookies.get('cmolabidea');
   
   if(token){
     var decoded = jwtHelper.decodeToken(token);
@@ -26,7 +26,7 @@ angular.module('AuthService', ['ngCookies','angular-jwt'])
   }
 
   userData.logOut = function(){
-    $cookies.remove('cmayete');
+    $cookies.remove('cmolabidea');
   };
 
   return userData;
@@ -36,7 +36,7 @@ angular.module('AuthService', ['ngCookies','angular-jwt'])
 .factory('authInterceptor', function ($rootScope, $q, $cookies) {
   return {
     request: function (config) {
-      var token = $cookies.get('cmayete');
+      var token = $cookies.get('cmolabidea');
       config.headers = config.headers || {};
       if (token) {
         config.headers['x-access-token'] = token;

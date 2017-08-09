@@ -1,4 +1,4 @@
-angular.module('cmjaizkibel', ['ngAnimate', 'ngMessages', 'app.routes', 'AuthService', 'mainCtrl','ngMaterial','angular-jwt','mealCtrl', 'MealService', 'settingsCtrl', 'SettingsService','bookCtrl', 'BookService','angular.filter','eventsCtrl','EventsService','sportsCtrl','SportsService'])
+angular.module('cmolabidea', ['ngAnimate', 'ngMessages', 'app.routes', 'AuthService', 'mainCtrl','ngMaterial','angular-jwt','mealCtrl', 'MealService', 'settingsCtrl', 'SettingsService','bookCtrl', 'BookService','angular.filter','eventsCtrl','EventsService','sportsCtrl','SportsService'])
 
 .config(function($mdThemingProvider) {
   $mdThemingProvider.theme('default')
@@ -7,8 +7,8 @@ angular.module('cmjaizkibel', ['ngAnimate', 'ngMessages', 'app.routes', 'AuthSer
       'hue-1': '800',
       'hue-2': '900',
     })
-    .accentPalette('orange', {
-      'default': '500'
+    .accentPalette('blue', {
+      'default': '200'
     });
 })
 

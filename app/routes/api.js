@@ -66,7 +66,7 @@ module.exports = function(app, express, passport) {
                               secret,{
                                 expiresIn: 11520 // expires in 8 days
                               });
-        res.cookie('cmayete', token);
+        res.cookie('cmolabidea', token);
         res.redirect('/meals');
       }else{
         var userData;
@@ -89,7 +89,7 @@ module.exports = function(app, express, passport) {
                                     expiresIn: "15d" // expires in 8 days
                                   });
 
-            res.cookie('cmayete', token);
+            res.cookie('cmolabidea', token);
             res.redirect('/meals');  
           }else{
             res.redirect('/login#error');
@@ -130,10 +130,10 @@ module.exports = function(app, express, passport) {
                                     expiresIn: "15d" // expires in 8 days
                                   });
 
-            res.cookie('cmayete', token);
+            res.cookie('cmolabidea', token);
             next();
           }else{
-            res.clearCookie('cmayete');
+            res.clearCookie('cmolabidea');
             return res.status(403).send({ 
               success: false, 
               message: 'Invalid User' 
