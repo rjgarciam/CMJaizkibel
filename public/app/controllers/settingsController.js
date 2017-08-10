@@ -18,7 +18,7 @@ angular.module('settingsCtrl', ['ngMaterial',])
     admin: false,
     meals: false,
     lockMeals: false,
-    //library: false,
+    library: false,
     hasDiet: false,
     dietContent: '',
   };
@@ -180,7 +180,7 @@ angular.module('settingsCtrl', ['ngMaterial',])
       var user = {};
       usersList.map(function(e){
         var i;
-        for(i=3;i<5;++i){
+        for(i=3;i<7;++i){
           if(e[i]==="no"){
             e[i] = false;
           }else{
@@ -194,13 +194,13 @@ angular.module('settingsCtrl', ['ngMaterial',])
           admin: e[3],
           meals: e[4],
           lockMeals: e[5],
-          //library: e[4],
+          library: e[6],
         };
-        if(e[5] === ""){
+        if(e[7] === ""){
           user.hasDiet = false;
         }else{
           user.hasDiet = true;
-          user.dietContent = e[5];
+          user.dietContent = 'dieta'; //e[7];
         }
         promiseArray.push(Settings.create(angular.copy(user)));
       });

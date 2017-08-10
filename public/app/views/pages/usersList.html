@@ -12,10 +12,10 @@
                           <span ng-if="user.admin">Administrador </span>
                           <span ng-if="user.meals">Ver comidas </span>
                           <span ng-if="user.lockMeals">Bloquear comidas </span>
-                          <!--<span ng-if="user.library">Biblioteca </span>-->
+                          <span ng-if="user.library">Biblioteca </span>
                           <span ng-if="!user.library && !user.meals && !user.lockMeals && !user.admin">No tiene ningún permiso de administrador</span>
                       </h4>
-                      <p ng-if="user.hasDiet">Descripción de la dieta: {{ user.dietContent }}</p>
+                      <p ng-if="user.hasDiet">Bajo régimen de comidas</p>
                       <p ng-if="!user.hasDiet">No tiene régimen especial de comidas</p>
                   </div>
                   <md-button class="md-icon-button" ng-if="$root.userData.admin == true" aria-label="Editar usuario" style="margin-top:16px;" ng-click="settings.editUser(user._id)">

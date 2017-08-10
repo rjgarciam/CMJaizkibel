@@ -20,17 +20,17 @@
                 <md-checkbox flex ng-checked="settings.isChecked('admin')" ng-click="settings.toggle('admin')" aria-label="Administrador">Administrador</md-checkbox>
                 <md-checkbox flex ng-checked="settings.isChecked('meals')" ng-click="settings.toggle('meals')" aria-label="Comidas">Ver comidas</md-checkbox>
                 <md-checkbox flex ng-checked="settings.isChecked('lockMeals')" ng-click="settings.toggle('lockMeals')" aria-label="Comidas">Bloquear comidas</md-checkbox>
-                <!--
+                
                 <md-checkbox flex ng-checked="settings.isChecked('library')" ng-click="settings.toggle('library')" aria-label="Biblioteca">Biblioteca</md-checkbox>
-                -->
+                
                 <md-checkbox flex ng-checked="settings.isChecked('hasDiet')" ng-click="settings.toggle('hasDiet')" aria-label="Dieta">Dieta</md-checkbox>
             </div>
-
+            <!--
             <md-input-container ng-if="settings.user.hasDiet">
                 <label>Contenido de la dieta</label>
                 <input name="clientName" type="text" ng-model="settings.user.dietContent">
             </md-input-container>
-
+            -->
             <md-button type="submit" id="addBookButton" class="md-raised" ng-class="'md-primary'" aria-label="Enviar">
                 <span>{{settings.sendButtonText}}</span>
             </md-button>
