@@ -10,6 +10,10 @@ angular.module('mealCtrl',[])
   vm.endDate = new Date();
   vm.currentDate = new Date();
 
+  vm.numberOfBreakfasts = 0;
+  vm.numberOfLunches = 0;
+  vm.numberOfDinners = 0;
+
   vm.possibleRepeats = [
     {id: 1, name: 'Cada día'},
     {id: 7, name: 'Cada semana'}
@@ -176,20 +180,36 @@ angular.module('mealCtrl',[])
 
   vm.getMeals = function(date) {
     vm.requests = [];
+    vm.numberOfBreakfasts = 103;
+    vm.numberOfLunches = 103;
+    vm.numberOfDinners = 103;
     var d = new Date(date.getTime()-(1000*60*60*24));
-    Meal.inDay(date)
-      .success(function(data){
-        vm.processing = false;
-        vm.requests = data;
-      });
+    Meal.inDay(date).success(function(data){
+      data.map(function(e){
+        if(vm.breakfastRequests.indexOf(e.change) !== -1){
+          --vm.numberOfBreakfasts;
+        }else if(vm.lunchRequests.indexOf(e.change) !== -1 && vm.dayBeforeIDkeys.indexOf(e.change) === -1){
+          --vm.numberOfLunches;
+        }else if(vm.dinnerRequests.indexOf(e.change) !== -1){
+          --vm.numberOfDinners;
+        }else if(e.change === 11){
+          vm.numberOfLunches = vm.numberOfLunches + e.numInvites;
+        }else if(e.change === 13){
+          vm.numberOfDinners = vm.numberOfDinners + e.numInvites;
+        }
+        vm.requests.push(e);
+       });
+    });
     Meal.inDay(d).success(function(data){
       data.map(function(e){
         if(vm.dayBeforeIDkeys.indexOf(e.change) !== -1){
           if(e.moment == 1){
             e.change = 1;
+            --vm.numberOfLunches;
             vm.requests.push(e);
           }else if(e.moment == 2){
             e.change = 3;
+            --vm.numberOfDinners;
             vm.requests.push(e);
           }
         }

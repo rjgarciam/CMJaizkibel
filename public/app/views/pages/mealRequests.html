@@ -4,8 +4,16 @@
       <span>Actualizar fecha</span>
     </md-button>
     <md-datepicker ng-model="meals.pickDate" ng-change="meals.getMeals(meals.pickDate)" md-placeholder="Fecha"></md-datepicker>
-    <md-list>
+    <md-list class="md-2-line">
       <md-subheader class="md-no-sticky">Comidas</md-subheader>
+      <md-list-item>
+      <div class="md-list-item-text">
+            <p>
+            Desayunos: {{meals.numberOfBreakfasts}} Comidas: {{meals.numberOfLunches}} Cenas: {{meals.numberOfDinners}}
+            </p>
+            </div>
+      </md-list-item>
+
       <md-list-item class="md-2-line" ng-repeat="(key, value) in meals.requests| groupBy: 'change' as requests">
           <div class="md-list-item-text">
             <h3>{{ meals.possibleRequests[key] }}: <b>{{requests[key].length}}</b></h3>
