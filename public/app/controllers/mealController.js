@@ -171,10 +171,11 @@ angular.module('mealCtrl',[])
         if(vm.dayBeforeIDkeys.indexOf(e.change) !== -1){
           if(e.moment == 1){
             e.change = 1;
+            vm.requests.push(e);
           }else if(e.moment == 2){
             e.change = 3;
+            vm.requests.push(e);
           }
-          vm.requests.push(e);
         }
       });
     });
