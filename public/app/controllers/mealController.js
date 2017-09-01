@@ -34,12 +34,26 @@ angular.module('mealCtrl',[])
     /*  7 */ 'Bocadillos a las 11:30',
     /*  8 */ 'Bocadillos en desayuno a las 7:15',
     /*  9 */ 'Bocadillos en desayuno a las 8:15',
+    /*  10 */'Invitar a comer a las 13:00',
+    /*  11 */'Invitar a comer',
+    /*  12 */'Invitar a comer a las 15:15',
+    /*  13 */'Invitar a cenar',
   ];
 
   vm.dayBeforeIDkeys = [5,6,8,9];
   vm.breakfastRequests = [5,6];
   vm.lunchRequests = [0,1,2,7,8,9];
   vm.dinnerRequests = [3,4];
+
+  vm.inviteRequests = [10,11,12,13];
+
+  vm.checkInvites = function(key){
+    if(vm.inviteRequests.indexOf(Number(key)) !== -1){
+      return true;
+    }else{
+      return false;
+    }
+  }
 
   vm.selectedRequest = 2;
 
@@ -137,12 +151,14 @@ angular.module('mealCtrl',[])
   vm.addMealMoment = function(meal){
     if(vm.breakfastRequests.indexOf(meal.change) !== -1){
       meal.moment = 0;
-    }
-    if(vm.lunchRequests.indexOf(meal.change) !== -1){
+    }else if(vm.lunchRequests.indexOf(meal.change) !== -1){
       meal.moment = 1;
-    }
-    if(vm.dinnerRequests.indexOf(meal.change) !== -1){
+    }else if(vm.dinnerRequests.indexOf(meal.change) !== -1){
       meal.moment = 2;
+    }else if(meal.change === 10 || meal.change === 11 || meal.change === 12){
+      meal.moment = 3;
+    }else if(meal.change === 13){
+      meal.moment = 4;
     }
   }
 
