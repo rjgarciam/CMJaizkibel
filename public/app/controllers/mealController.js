@@ -37,7 +37,7 @@ angular.module('mealCtrl',[])
     /*  10 */ 'Bocadillos en desayuno a las 8:15',
   ];
 
-  vm.dayBeforeIDkeys = [6,7,8,9,10];
+  vm.dayBeforeIDkeys = [6,7,9,10];
   vm.breakfastRequests = [6,7];
   vm.lunchRequests = [0,1,2,8,9,10];
   vm.dinnerRequests = [3,4,5];
