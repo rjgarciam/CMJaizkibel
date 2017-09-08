@@ -9,7 +9,7 @@
       <md-list-item class="md-2-line" ng-repeat="(key, value) in meals.requests| groupBy: 'change' as requests">
           <div class="md-list-item-text">
             <h3>{{ meals.possibleRequests[key] }}: <b>{{requests[key].length}}</b></h3>
-            <p ng-repeat="user in value">{{ user.name }} <span ng-if="user.hasDiet === 'true'">({{user.dietContent}})</span> </p>
+            <p ng-repeat="user in value">{{ user.name }} <b>{{ user.id | uppercase}} </b><span ng-if="user.hasDiet === 'true'">({{user.dietContent}})</span> </p>
           </div>
       </md-list-item>
       <md-divider></md-divider>
