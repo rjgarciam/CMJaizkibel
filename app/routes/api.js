@@ -718,7 +718,7 @@ module.exports = function(app, express, passport) {
       // var query = {req.query.field};
       var today = req.query.minTime;
       var pageToken = req.query.pageToken;
-      var calendarURL = 'ayete.es_pu5p3ltp22t89tvn783vuoph84@group.calendar.google.com';
+      var calendarURL = 'culturalolabi@gmail.com';
       var url = 'https://www.googleapis.com/calendar/v3/calendars/' + calendarURL + '/events';
       var config = {
                   key: GCalendarAPI,
