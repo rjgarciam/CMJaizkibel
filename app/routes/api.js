@@ -318,7 +318,7 @@ module.exports = function(app, express, passport) {
             return res.json({users,nump});
           })
         }
-      }).sort({numero: -1}).skip(currentPage*10).limit(10); //Remove use of SKIP, see $lt
+      }).sort({name: 1}).skip(currentPage*10).limit(10); //Remove use of SKIP, see $lt
     });
 
   apiRouter.route('/userDiets/:user_num')
