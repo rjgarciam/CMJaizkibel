@@ -5,9 +5,10 @@ var Schema       = mongoose.Schema;
 // Meal schema 
 var MealSchema   = new Schema({
 	change: {type: Number},
+	numInvites: {type: Number},
   date:   {type: Date},
   id:     {type: String},
-  moment: {type: Number},  // 0->Breakfast 1->Lunch 2->Dinner
+  moment: {type: Number},  // 0->Breakfast 1->Lunch 2->Dinner 3->InviteLunch 4->InviteDinner
   reqDate: {type: Date},
   name: {type: String},
   hasDiet: {type: String},

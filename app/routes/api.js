@@ -157,7 +157,8 @@ module.exports = function(app, express, passport) {
     .post(function(req, res) {
       var meal = new Meal();            
       meal.id = req.body.id.toLowerCase();            
-      meal.change = req.body.change;    
+      meal.change = req.body.change;  
+      meal.numInvites = req.body.numInvites;   
       meal.date = req.body.date;
       meal.reqDate = req.body.reqDate;  
       meal.moment = req.body.moment;
