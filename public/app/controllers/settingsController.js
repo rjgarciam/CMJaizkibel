@@ -1,6 +1,6 @@
 angular.module('settingsCtrl', ['ngMaterial',])
 
-.controller('SettingsController', function($rootScope, $location, Settings,$window,$mdDialog, $q, Meal) {
+.controller('SettingsController', function($rootScope, $location, Settings,$window,$mdDialog, $q, Meal, Book) {
   var vm = this;
 
   vm.settingsData = {
@@ -145,9 +145,21 @@ angular.module('settingsCtrl', ['ngMaterial',])
     });
   }
 
-  vm.showUploadFileDialog = function(ev) {
+  vm.showUploadUsersDialog = function(ev) {
+    console.log("Users dialog");
     $mdDialog.show({
-      contentElement: '#uploadFileDialog',
+      contentElement: '#uploadUsersDialog',
+      parent: angular.element(document.body),
+      clickOutsideToClose:false,
+      escapeToClose: false,
+      fullscreen: false,
+    });
+  };
+
+  vm.showUploadBooksDialog = function(ev) {
+    console.log("Books dialog");
+    $mdDialog.show({
+      contentElement: '#uploadBooksDialog',
       parent: angular.element(document.body),
       clickOutsideToClose:false,
       escapeToClose: false,
@@ -160,7 +172,10 @@ angular.module('settingsCtrl', ['ngMaterial',])
     vm.uploadDone = false;
   }
 
-  vm.processCSV = function(event){
+
+
+  vm.processCSVUsers = function(event){
+    console.log("processing users!");
     var file = event.target.files;
     Papa.parse(file[0], {
       complete: function(results) {
@@ -171,11 +186,24 @@ angular.module('settingsCtrl', ['ngMaterial',])
     });
   }
 
+  vm.processCSVBooks = function(event){
+    console.log("processing books!");
+    var file = event.target.files;
+    Papa.parse(file[0], {
+      complete: function(results) {
+          results.data.splice(0,1);
+          vm.newBooksNumber = results.data.length;
+          vm.uploadMultipleBooks(results.data);
+      }
+    });
+  }
+
   vm.uploadMultipleUsers = function(usersList){
+    console.log("Uploading Users!");
     vm.processing = true;
     vm.uploadDone = true;
     Settings.clearCollection('User').then(function(){
-      vm.showUploadFileDialog();
+      vm.showUploadUsersDialog();
       var promiseArray = [];
       var user = {};
       usersList.map(function(e){
@@ -216,6 +244,34 @@ angular.module('settingsCtrl', ['ngMaterial',])
           }
         );
     });
+  }
+
+  vm.uploadMultipleBooks = function(booksList){
+    console.log("Uploading Books!");
+    vm.processing = true;
+    vm.uploadDone = true;
+      vm.showUploadBooksDialog();
+      var promiseArray = [];
+      var book = {};
+      booksList.map(function(e){
+        book = {
+          titulo: e[0],
+          fullAuthor: e[1],
+          enUso: null,
+        };
+        promiseArray.push(Book.create(angular.copy(book)));
+      });
+      $q.all(promiseArray)
+        .then(
+          function () {
+            vm.processing = false;
+            vm.loadSettingsData();
+          },
+          function () {
+            vm.processing = false;
+            vm.errors = true;
+          }
+        );
   }
 
 });

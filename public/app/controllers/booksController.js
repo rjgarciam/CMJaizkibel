@@ -9,21 +9,13 @@ angular.module('bookCtrl', ['ngMaterial'])
   vm.sendButtonText = 'Enviar';
   vm.searchAll = '';
   vm.search = {
-    apellidos: [''],
-    nombre: [''],
     titulo: [''],
-    idioma: [''],
-    lugar: ['']
+    fullAuthor: [''],
   };
 
   vm.book = {
-    numero: '',
-    letra: '',
-    apellidos: '',
-    nombre: '',
     titulo: '',
-    idioma: '',
-    lugar: '',
+    fullAuthor: '',
     enUso: '',
     fecha: '',
   };
@@ -109,8 +101,10 @@ angular.module('bookCtrl', ['ngMaterial'])
   }
 
   vm.takeBook = function(id){
+    console.log(id, $rootScope.userData.number);
     Book.manageMyBook(id,$rootScope.userData.number)
       .success(function(data) {
+        console.log(data);
         vm.processing = false;
         vm.getBooks();
       });

@@ -11,11 +11,10 @@
         </div>
         <md-list>
             <p ng-if="books.books.length == 0">Lo sentimos, ningún libro coincide con el criterio de búsqueda</p>
-            <md-list-item class="md-3-line" ng-repeat="book in books.books| filter:books.searchAll track by book.numero" >
+            <md-list-item class="md-2-line" ng-repeat="book in books.books| filter:books.searchAll track by book._id" >
                 <div class="md-list-item-text" layout="column">
                     <h3>{{ book.titulo }}</h3>
-                    <h4>{{ book.apellidos }}, {{ book.nombre }}</h4>
-                    <p>{{ book.lugar }}. {{ book.idioma }}</p>
+                    <h4>{{ book.fullAuthor }}</h4>
                 </div>
                 <md-button class="md-icon-button" ng-if="$root.userData.library == true" aria-label="Borrar" style="margin-top:16px;" ng-click="books.editBook(book._id)">
                     <md-icon class="material-icons" aria-label="Actualizar fecha mínima">create</md-icon>

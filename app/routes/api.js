@@ -479,14 +479,8 @@ module.exports = function(app, express, passport) {
   apiRouter.route('/books')
     .post(function(req,res){
       var book = new Book();
-      book.numero = req.body.numero;
-      book.letra = req.body.letra;
-      book.apellidos = req.body.apellido;
-      book.nombre = req.body.nombre;
       book.titulo = req.body.titulo;
-      book.idioma = req.body.idioma;
-      book.lugar = req.body.lugar;
-      book.fullAuthor = req.body.nombre + ' ' + req.body.apellido;
+      book.fullAuthor = req.body.fullAuthor;
       book.save(function(err){
         if(err){
           if (err.code == 11000) 
@@ -517,7 +511,7 @@ module.exports = function(app, express, passport) {
                     return res.json({books,nump});
           })
         }
-      }).sort({numero: -1}).skip(currentPage*10).limit(10); //Remove use of SKIP, see $lt
+      }).sort({fullAuthor: 1}).skip(currentPage*10).limit(10); //Remove use of SKIP, see $lt
     });
 
   apiRouter.route('/books/:book_id')
@@ -537,14 +531,8 @@ module.exports = function(app, express, passport) {
     })
     .put(function(req, res) {
       Book.findOneAndUpdate({_id: req.params.book_id},{
-        numero: req.body.numero,
-        letra: req.body.letra,
-        apellidos: req.body.apellidos,
-        nombre: req.body.nombre,
         titulo: req.body.titulo,
-        idioma: req.body.idioma,
-        lugar: req.body.lugar,
-        fullAuthor: req.body.nombre + ' ' + req.body.apellido,
+        fullAuthor: req.body.fullAuthor,
       },function(err, data) {
         if (err){
           return err;
@@ -589,7 +577,7 @@ module.exports = function(app, express, passport) {
             return res.json({books,nump});
           })  
         }
-      }).sort({numero: -1}).skip(currentPage*10).limit(10);
+      }).sort({fullAuthor: 1}).skip(currentPage*10).limit(10);
     });
 
   apiRouter.route('/myBooks')

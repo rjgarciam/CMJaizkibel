@@ -1,48 +1,26 @@
 <md-card>
   <md-card-content>
     <form ng-submit="books.isUpdate ? books.editedBook() : books.addNew()">
-      <md-input-container>
-        <label>Número de ID</label>
-        <input name="clientName" type="number" ng-model="books.book.numero">
-      </md-input-container>
 
       <md-autocomplete
-          md-selected-item="books.book.apellidos"
-          md-search-text-change="books.bookData('apellidos',books.search.apellidos)"
-          md-search-text="books.search.apellidos"
-          md-selected-item-change="books.selectedItemChange(item,'apellidos')"
-          md-items="item in books.bookData('apellidos',books.search.apellidos)"
+          md-selected-item="books.book.fullAuthor"
+          md-search-text-change="books.bookData('fullAuthor',books.search.fullAuthor)"
+          md-search-text="books.search.fullAuthor"
+          md-selected-item-change="books.selectedItemChange(item,'fullAuthor')"
+          md-items="item in books.bookData('fullAuthor',books.search.fullAuthor)"
           md-item-text="item"
-          placeholder="Apellidos"
+          placeholder="Autor"
           ng-model-options="{debounce: 500}"
           >
         <md-item-template>
-          <span md-highlight-text="books.search.apellidos" md-highlight-flags="^i">{{item}}</span>
+          <span md-highlight-text="books.search.fullAuthor" md-highlight-flags="^i">{{item}}</span>
         </md-item-template>
         <md-not-found>
-          No hay ningún autor con el apellido "{{books.search.apellidos}}".
-          <a ng-click="books.newData(books.search.apellidos,'apellidos')">Añadir nuevo</a>
+          No existe "{{books.search.fullAuthor}}".
+          <a ng-click="books.newData(books.search.fullAuthor,'fullAuthor')">Añadir nuevo</a>
         </md-not-found>
       </md-autocomplete>
 
-      <md-autocomplete
-          md-selected-item="books.book.nombre"
-          md-search-text-change="books.bookData('nombre',books.search.nombre)"
-          md-search-text="books.search.nombre"
-          md-selected-item-change="books.selectedItemChange(item,'nombre')"
-          md-items="item in books.bookData('nombre',books.search.nombre)"
-          md-item-text="item"
-          placeholder="Nombre"
-          ng-model-options="{debounce: 500}"
-          >
-        <md-item-template>
-          <span md-highlight-text="books.search.nombre" md-highlight-flags="^i">{{item}}</span>
-        </md-item-template>
-        <md-not-found>
-          No hay ningún autor con el nombre "{{books.search.nombre}}".
-          <a ng-click="books.newData(books.search.nombre,'nombre')">Añadir nuevo</a>
-        </md-not-found>
-      </md-autocomplete>
 
       <md-autocomplete
           md-selected-item="books.book.titulo"
@@ -60,44 +38,6 @@
         <md-not-found>
           No hay ningún libro con el titulo "{{books.search.titulo}}".
           <a ng-click="books.newData(books.search.titulo,'titulo')">Añadir nuevo</a>
-        </md-not-found>
-      </md-autocomplete>
-
-      <md-autocomplete
-          md-selected-item="books.book.idioma"
-          md-search-text-change="books.bookData('nombre',books.search.idioma)"
-          md-search-text="books.search.idioma"
-          md-selected-item-change="books.selectedItemChange(item,'idioma')"
-          md-items="item in books.bookData('idioma',books.search.idioma)"
-          md-item-text="item"
-          placeholder="Idioma"
-          ng-model-options="{debounce: 500}"
-          >
-        <md-item-template>
-          <span md-highlight-text="books.search.idioma" md-highlight-flags="^i">{{item}}</span>
-        </md-item-template>
-        <md-not-found>
-          No hay ningún libro escrito en "{{books.search.idioma}}".
-          <a ng-click="books.newData(books.search.idioma,'idioma')">Añadir nuevo</a>
-        </md-not-found>
-      </md-autocomplete>
-
-      <md-autocomplete
-          md-selected-item="books.book.lugar"
-          md-search-text-change="books.bookData('nombre',books.search.lugar)"
-          md-search-text="books.search.lugar"
-          md-selected-item-change="books.selectedItemChange(item,'lugar')"
-          md-items="item in books.bookData('lugar',books.search.lugar)"
-          md-item-text="item"
-          placeholder="Lugar"
-          ng-model-options="{debounce: 500}"
-          >
-        <md-item-template>
-          <span md-highlight-text="books.search.lugar" md-highlight-flags="^i">{{item}}</span>
-        </md-item-template>
-        <md-not-found>
-          No hay ningún guardado en "{{books.search.lugar}}".
-          <a ng-click="books.newData(books.search.lugar,'lugar')">Añadir nuevo</a>
         </md-not-found>
       </md-autocomplete>
 
