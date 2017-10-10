@@ -29,7 +29,7 @@ angular.module('mealCtrl',[])
     /*  02 */ 'Como a las 15:15',
     /*  03 */ 'No ceno',
     /*  04 */ 'Bocadillos en la cena a las 20:00',
-    /*  05 */ 'Cena tarde ENFERMERÍA',
+    /*  05 */ 'Cena ENFERMERÍA',
     /*  06 */ 'No desayuno',
     /*  07 */ 'Desayuno 7:15',
     /*  08 */ 'Bocadillos a las 11:30',
