@@ -10,6 +10,8 @@ var config     = require('../config/config');
 var mongoXlsx  = require('mongo-xlsx');
 var fs         = require('fs');
 var request    = require('request');
+var schedule   = require('node-schedule');
+
 
 // keys and data
 // ================
@@ -17,6 +19,34 @@ var secret    = process.env.SECRET || config.secret;
 var minimumMealsDay = process.env.MINDAY || new Date().setTime(config.minday);
 var defaultUser = process.env.DEFAULTUSER || config.defaultUser;
 var GCalendarAPI = process.env.GCALKEY || config.gCalApiKey;
+
+var j = schedule.scheduleJob('00 00 09 * * *', function(){
+  newDate = new Date(new Date().setDate(new Date().getDate()+1));
+  console.log(newDate);
+  /*
+  identifier = null;
+  newDate = new Date(new Date().setDate(new Date().getDate()+1));
+  newDate.setHours(0,0,0,0);
+  newDate = newDate.getTime();
+  q =  LastDate.findOne({},function(err, lastdate) {
+          if (err) res.send(err);
+            if (err){
+              return err;
+            }else{
+              identifier = lastdate._id;
+                    LastDate.findOneAndUpdate({_id: identifier},{
+                      date: newDate,
+                    },function(err, data) {
+                      if (err){
+                        return err;
+                      }else{
+                        return data;
+                      }
+                    });
+            }
+        });
+    */
+});
 
 // API Code
 // =========

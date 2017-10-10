@@ -20,6 +20,7 @@
     "mongo-xlsx": "^1.0.12",
     "mongoose": "^4.5.3",
     "morgan": "^1.7.0",
+    "node-schedule": "^1.2.5",
     "passport": "^0.3.2",
     "passport-google-oauth": "^1.0.0",
     "request": "^2.81.0"
