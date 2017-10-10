@@ -20,10 +20,8 @@ var minimumMealsDay = process.env.MINDAY || new Date().setTime(config.minday);
 var defaultUser = process.env.DEFAULTUSER || config.defaultUser;
 var GCalendarAPI = process.env.GCALKEY || config.gCalApiKey;
 
-var j = schedule.scheduleJob('00 00 09 * * *', function(){
-  newDate = new Date(new Date().setDate(new Date().getDate()+1));
-  console.log(newDate);
-  /*
+var j = schedule.scheduleJob('00 00 07 * * *', function(){
+  // UTC time (Spain -2h)
   identifier = null;
   newDate = new Date(new Date().setDate(new Date().getDate()+1));
   newDate.setHours(0,0,0,0);
@@ -45,7 +43,6 @@ var j = schedule.scheduleJob('00 00 09 * * *', function(){
                     });
             }
         });
-    */
 });
 
 // API Code
