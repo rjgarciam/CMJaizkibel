@@ -190,6 +190,7 @@ angular.module('settingsCtrl', ['ngMaterial',])
     console.log("processing books!");
     var file = event.target.files;
     Papa.parse(file[0], {
+      delimiter: ";",
       complete: function(results) {
           results.data.splice(0,1);
           vm.newBooksNumber = results.data.length;
