@@ -11,9 +11,9 @@
             <h3>{{ meals.possibleRequests[key] }}: <b>{{requests[key].length}}</b></h3>
             <p ng-repeat="user in value">{{ user.name }} <b>{{ user.id | uppercase}} </b><span ng-if="user.hasDiet === 'true'">({{user.dietContent}})</span> </p>
           </div>
+          <br/>
       </md-list-item>
       <md-divider></md-divider>
-      <br/>
     </md-list>
   </md-card-content>
 </md-card>
