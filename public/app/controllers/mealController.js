@@ -24,12 +24,12 @@ angular.module('mealCtrl',[])
   };
 
   vm.possibleRequests = [
-    /*  0 */ 'Tachar la comida',
-    /*  1 */ 'Tachar la cena',
-    /*  2 */ 'Comer de Tupper',
-    /*  3 */ 'Comida pronto',
-    /*  4 */ 'Comida tarde',
-    /*  5 */ 'Cena tarde',
+    /*  0 */ 'Como',
+    /*  1 */ 'Ceno',
+    /*  2 */ 'Como de Tupper',
+    /*  3 */ 'Como pronto',
+    /*  4 */ 'Como tarde',
+    /*  5 */ 'Ceno tarde',
   ];
 
   vm.dayBeforeIDkeys = [2];
@@ -160,6 +160,7 @@ angular.module('mealCtrl',[])
         vm.processing = false;
         vm.requests = data;
       });
+    /* Auto-SignUp meals
     Meal.inDay(d).success(function(data){
       data.map(function(e){
         if(vm.dayBeforeIDkeys.indexOf(e.change) !== -1){
@@ -172,6 +173,7 @@ angular.module('mealCtrl',[])
         }
       });
     });
+    */
   }
 
   // function to delete a change
