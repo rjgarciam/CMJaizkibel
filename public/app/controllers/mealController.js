@@ -26,7 +26,7 @@ angular.module('mealCtrl',[])
   vm.possibleRequests = [
     /*  0 */ 'Como',
     /*  1 */ 'Ceno',
-    /*  2 */ 'Como de Tupper',
+    /*  2 */ 'Tupper',
     /*  3 */ 'Como pronto',
     /*  4 */ 'Como tarde',
     /*  5 */ 'Ceno tarde',
