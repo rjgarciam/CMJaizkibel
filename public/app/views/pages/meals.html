@@ -10,7 +10,7 @@
                     </md-input-container>
                     -->
                     <!-- Normal flex: 60 -->
-                    <md-input-container flex="100" flex-xs="100">
+                    <md-input-container flex="60" flex-xs="100">
                         <label>Cambio</label>
                         <md-select name="selectChange" ng-model="meals.mealAsked.change" required>
                             <md-option ng-repeat="request in meals.possibleRequests" ng-value="{{ $index }}">
@@ -26,7 +26,7 @@
                     -->
                 </div>
 
-                <!--
+                
                 <md-input-container ng-if="meals.repeat">
                     <label>Repetir</label>
                     <md-select ng-model="meals.mealAsked.doRepeat">
@@ -36,10 +36,8 @@
                     </md-select>
                     <p class="validation-messages">El número máximo de repeticiones en un solo pedido es de 15</p>
                 </md-input-container>
-            -->
-                <!--
+            
                 <md-checkbox hide-gt-xs flex ng-model="meals.repeat" aria-label="Repetir">Repetir cambio</md-checkbox>
-                -->
                    
                <md-input-container ng-if="meals.checkInvites(meals.mealAsked.change)" required>
                     <label>Número de invitaciones</label>
