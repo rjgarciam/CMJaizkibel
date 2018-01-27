@@ -180,9 +180,9 @@ angular.module('mealCtrl',[])
 
   vm.getMeals = function(date) {
     vm.requests = [];
-    vm.numberOfBreakfasts = 103;
-    vm.numberOfLunches = 103;
-    vm.numberOfDinners = 103;
+    vm.numberOfBreakfasts = 104;
+    vm.numberOfLunches = 104;
+    vm.numberOfDinners = 104;
     var d = new Date(date.getTime()-(1000*60*60*24));
     
     //Used for substracting meals
@@ -191,9 +191,9 @@ angular.module('mealCtrl',[])
         if(vm.breakfastRequests.indexOf(e.change) !== -1){
           --vm.numberOfBreakfasts;
         }else if(vm.lunchRequests.indexOf(e.change) !== -1 && vm.dayBeforeIDkeys.indexOf(e.change) === -1){
-          ++vm.numberOfLunches;
+          --vm.numberOfLunches;
         }else if(vm.dinnerRequests.indexOf(e.change) !== -1){
-          ++vm.numberOfDinners;
+          --vm.numberOfDinners;
         }else if(e.change === 11){
           vm.numberOfLunches = vm.numberOfLunches + e.numInvites;
         }else if(e.change === 13){
