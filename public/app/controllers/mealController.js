@@ -199,6 +199,7 @@ angular.module('mealCtrl',[])
         }else if(e.change === 13){
           vm.numberOfDinners = vm.numberOfDinners + e.numInvites;
         }
+        e.id = parseInt(e.id);
         vm.requests.push(e);
        });
     });
@@ -228,10 +229,12 @@ angular.module('mealCtrl',[])
           if(e.moment == 1){
             e.change = 1;
             --vm.numberOfLunches;
+            e.id = parseInt(e.id);
             vm.requests.push(e);
           }else if(e.moment == 2){
             e.change = 3;
             --vm.numberOfDinners;
+            e.id = parseInt(e.id);
             vm.requests.push(e);
           }
         }
