@@ -152,6 +152,17 @@ angular.module('app.routes', ['ngRoute'])
       }
     })
 
+    // Meals section
+    .when('/cs18', {
+      templateUrl : 'app/views/pages/cs18.html',
+      controller  : 'MealController',
+          controllerAs: 'meals',
+      data: {
+        reqPermissions: 'isLogged',
+        redirect: '/login',
+      }
+    })
+
 
     .otherwise({ redirectTo: '/meals'})
 
