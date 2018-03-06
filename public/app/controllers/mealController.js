@@ -29,11 +29,11 @@ angular.module('mealCtrl',[])
 
   vm.possibleRequests = [
     /*  0 */ 'Como a las 13:00',
-    /*  1 */ 'No como',
+    /*  1 */ 'Como',
     /*  2 */ 'Como a las 15:15',
-    /*  3 */ 'No ceno',
+    /*  3 */ 'Ceno',
     /*  4 */ 'Ceno a las 22:00',
-    /*  5 */ 'No desayuno',
+    /*  5 */ 'Desayuno',
     /*  6 */ 'Desayuno 7:15',
     /*  7 */ 'Bocadillos a las 11:30',
     /*  8 */ 'Bocadillos en desayuno a las 7:15',
@@ -180,12 +180,13 @@ angular.module('mealCtrl',[])
 
   vm.getMeals = function(date) {
     vm.requests = [];
-    vm.numberOfBreakfasts = 104;
-    vm.numberOfLunches = 104;
-    vm.numberOfDinners = 104;
+    vm.numberOfBreakfasts = 0; //104;
+    vm.numberOfLunches = 0; //104;
+    vm.numberOfDinners = 0; //104;
     var d = new Date(date.getTime()-(1000*60*60*24));
     
     //Used for substracting meals
+    /*
     Meal.inDay(date).success(function(data){
       data.map(function(e){
         if(vm.breakfastRequests.indexOf(e.change) !== -1){
@@ -203,8 +204,9 @@ angular.module('mealCtrl',[])
         vm.requests.push(e);
        });
     });
+    */
     
-    /*
+    
     Meal.inDay(date).success(function(data){
       data.map(function(e){
         if(e.change == 1){
@@ -221,8 +223,8 @@ angular.module('mealCtrl',[])
         vm.requests.push(e);
       });
     });
-    */
     
+    /*
     Meal.inDay(d).success(function(data){
       data.map(function(e){
         if(vm.dayBeforeIDkeys.indexOf(e.change) !== -1){
@@ -240,6 +242,7 @@ angular.module('mealCtrl',[])
         }
       });
     });
+    */
     
   }
 
