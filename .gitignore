@@ -13,3 +13,4 @@ public/app/env.js
 
 
 *.sketch
+.DS_Store
