@@ -25,13 +25,13 @@ angular.module('mealCtrl',[])
 
   vm.possibleRequests = [
     /*  00 */ 'Como a las 13:15',
-    /*  01 */ 'No como',
+    /*  01 */ 'Como a las 14:15',
     /*  02 */ 'Como a las 15:15',
-    /*  03 */ 'No ceno',
-    /*  04 */ 'Bocadillos en la cena a las 20:00',
-    /*  05 */ 'Cena ENFERMERÍA',
-    /*  06 */ 'No desayuno',
-    /*  07 */ 'Desayuno 7:15',
+    /*  03 */ 'Ceno a las 21:00',
+    /*  04 */ 'Ceno a las 22:00',
+    /*  05 */ 'Desayuno normal',
+    /*  06 */ 'Desayuno 7:15',
+    /*  07 */ 'Bocadillos en la cena a las 20:00',
     /*  08 */ 'Bocadillos a las 11:30',
     /*  09 */ 'Bocadillos en desayuno a las 7:15',
     /*  10 */ 'Bocadillos en desayuno a las 8:15',
@@ -41,10 +41,10 @@ angular.module('mealCtrl',[])
     /*  14 */ 'Invitar a cenar',
   ];
 
-  vm.dayBeforeIDkeys = [6,7,9,10];
-  vm.breakfastRequests = [6,7];
+  vm.dayBeforeIDkeys = [5,6,9,10];
+  vm.breakfastRequests = [5,6];
   vm.lunchRequests = [0,1,2,8,9,10];
-  vm.dinnerRequests = [3,4,5];
+  vm.dinnerRequests = [3,4,7];
 
   vm.inviteRequests = [11,12,13,14];
 
@@ -182,6 +182,7 @@ angular.module('mealCtrl',[])
         vm.processing = false;
         vm.requests = data;
       });
+    /*
     Meal.inDay(d).success(function(data){
       data.map(function(e){
         if(vm.dayBeforeIDkeys.indexOf(e.change) !== -1){
@@ -195,6 +196,7 @@ angular.module('mealCtrl',[])
         }
       });
     });
+    */
   }
 
   // function to delete a change
