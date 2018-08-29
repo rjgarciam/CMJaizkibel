@@ -1,5 +1,5 @@
 {
-  "name": "cmgoimendi",
+  "name": "cmgoroabe",
   "version": "1.0.0",
   "description": "Internal web application for a students hall of residence",
   "main": "server.js",
@@ -8,7 +8,9 @@
     "npm": "3.10.5"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "bower": "bower",
+    "gulp": "gulp"
   },
   "author": "rjgarciam",
   "dependencies": {

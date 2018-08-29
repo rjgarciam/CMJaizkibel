@@ -13,3 +13,5 @@ public/app/env.js
 
 
 *.sketch
+.DS_Store
+package-lock.json

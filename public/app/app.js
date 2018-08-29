@@ -7,7 +7,7 @@ angular.module('cmgoimendi', ['ngAnimate', 'ngMessages', 'app.routes', 'AuthServ
       'hue-1': '800',
       'hue-2': '900',
     })
-    .accentPalette('lime', {
+    .accentPalette('grey', {
       'default': '500'
     });
 })
