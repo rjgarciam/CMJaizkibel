@@ -7,7 +7,7 @@ var Sport      = require('../models/sports');
 var LastDate   = require('../models/lastDate');
 var jwt        = require('jsonwebtoken');
 var config     = require('../config/config');
-var mongoXlsx  = require('mongo-xlsx');
+//var mongoXlsx  = require('mongo-xlsx');
 var fs         = require('fs');
 var request    = require('request');
 
@@ -24,6 +24,7 @@ module.exports = function(app, express, passport) {
 
   var apiRouter = express.Router();
 
+  /*
   apiRouter.route('/books/downloadxls')
     .get(function(req, res) {
       Book.find(function(err, books) {
@@ -41,6 +42,7 @@ module.exports = function(app, express, passport) {
         }
       });
     });
+    */
 
 
   apiRouter.get('/auth/google', passport.authenticate('google', { scope: ['profile','email'],prompt : "select_account" }));
