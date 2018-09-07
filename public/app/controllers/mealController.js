@@ -8,10 +8,9 @@ angular.module('mealCtrl',[])
   vm.pickDate = new Date();
   vm.repeat = false;
   vm.endDate = new Date();
-  vm.mealAsked.date = new Date();
   vm.currentDate = new Date();
 
-  vm.maxFormDate = new Date(vm.mealAsked.date.getTime()+(1000*60*60*24*15));
+  vm.maxFormDate = new Date(vm.currentDate.getTime()+(1000*60*60*24*15));
 
 
   vm.possibleRepeats = [
@@ -64,6 +63,7 @@ angular.module('mealCtrl',[])
   vm.selectedRequest = 2;
 
   vm.mealAsked = {};
+  vm.mealAsked.date = new Date();
   vm.mealAsked.id = $rootScope.userData.number;
   vm.mealAsked.reqDate = new Date();  
   vm.mealAsked.doRepeat = 0;
