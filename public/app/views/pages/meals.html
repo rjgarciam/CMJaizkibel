@@ -44,7 +44,7 @@
 
                 <div ng-if="meals.screenSize >= 376" layout="row" layout-align="center center">
                     <div style="text-align:center">
-                    <md-datepicker name="startDate" ng-model="meals.mealAsked.date" md-placeholder="Fecha*" md-min-date="meals.currentDate" required></md-datepicker>
+                    <md-datepicker name="startDate" ng-model="meals.mealAsked.date" md-placeholder="Fecha*" md-min-date="meals.currentDate" md-max-date="meals.maxFormDate" required></md-datepicker>
                         <div class="validation-messages" ng-messages="mealsForm.startDate.$touched && mealsForm.startDate.$error">
                             <div ng-message="valid">El valor introducido no es válido</div>
                             <div ng-message="required">Campo obligatorio</div>
@@ -52,7 +52,7 @@
                         </div>
                     </div>
                     <div style="text-align:center">
-                        <md-datepicker name="endDate" ng-if="meals.repeat" ng-model="meals.mealAsked.endDate" md-placeholder="Hasta*" md-min-date="meals.mealAsked.date" required></md-datepicker>
+                        <md-datepicker name="endDate" ng-if="meals.repeat" ng-model="meals.mealAsked.endDate" md-placeholder="Hasta*" md-min-date="meals.currentDate" md-max-date="meals.maxFormDate" required></md-datepicker>
                         <div class="validation-messages" ng-messages="mealsForm.endDate.$touched && mealsForm.endDate.$error">
                             <div ng-message="valid">El valor introducido no es válido</div>
                             <div ng-message="required">Campo obligatorio</div>
@@ -63,7 +63,7 @@
 
                 <div ng-if="meals.screenSize < 376" layout="column" layout-align="center center">
                     <div style="text-align:center">
-                    <md-datepicker name="startDate" ng-model="meals.mealAsked.date" md-placeholder="Fecha*" md-min-date="meals.currentDate" required></md-datepicker>
+                    <md-datepicker name="startDate" ng-model="meals.mealAsked.date" md-placeholder="Fecha*" md-min-date="meals.currentDate" md-max-date="meals.maxFormDate" required></md-datepicker>
                         <div class="validation-messages" ng-messages="mealsForm.startDate.$touched && mealsForm.startDate.$error">
                             <div ng-message="valid">El valor introducido no es válido</div>
                             <div ng-message="required">Campo obligatorio</div>
@@ -71,7 +71,7 @@
                         </div>
                     </div>
                     <div style="text-align:center">
-                        <md-datepicker name="endDate" ng-if="meals.repeat" ng-model="meals.mealAsked.endDate" md-placeholder="Hasta*" md-min-date="meals.mealAsked.date" required></md-datepicker>
+                        <md-datepicker name="endDate" ng-if="meals.repeat" ng-model="meals.mealAsked.endDate" md-placeholder="Hasta*" md-min-date="meals.currentDate" md-max-date="meals.maxFormDate" required></md-datepicker>
                         <div class="validation-messages" ng-messages="mealsForm.endDate.$touched && mealsForm.endDate.$error">
                             <div ng-message="valid">El valor introducido no es válido</div>
                             <div ng-message="required">Campo obligatorio</div>

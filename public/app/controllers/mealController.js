@@ -10,6 +10,9 @@ angular.module('mealCtrl',[])
   vm.endDate = new Date();
   vm.currentDate = new Date();
 
+  vm.maxFormDate = new Date(date.getTime()+(1000*60*60*24*15));
+
+
   vm.possibleRepeats = [
     {id: 1, name: 'Cada día'},
     {id: 7, name: 'Cada semana'}
