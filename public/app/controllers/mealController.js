@@ -10,6 +10,8 @@ angular.module('mealCtrl',[])
   vm.endDate = new Date();
   vm.currentDate = new Date();
 
+  vm.maxFormDate = new Date(vm.currentDate.getTime()+(1000*60*60*24*15));
+
   vm.numberOfBreakfasts = 0;
   vm.numberOfLunches = 0;
   vm.numberOfDinners = 0;

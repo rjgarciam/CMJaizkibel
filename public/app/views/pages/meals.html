@@ -10,7 +10,7 @@
                     </md-input-container>
                     -->
                     <!-- Normal flex: 60 -->
-                    <md-input-container flex="100" flex-xs="100">
+                    <md-input-container flex="60" flex-xs="60">
                         <label>Cambio</label>
                         <md-select name="selectChange" ng-model="meals.mealAsked.change" required>
                             <md-option ng-repeat="request in meals.possibleRequests" ng-value="{{ $index }}">
@@ -21,13 +21,13 @@
                                 <div ng-message="required">Campo obligatorio</div>
                             </div>
                     </md-input-container>
-                    <!--
+                    
                     <md-checkbox hide-xs flex ng-model="meals.repeat" aria-label="Repetir">Repetir cambio</md-checkbox>
-                -->
+                
                     
                 </div>
 
-                <!--
+                
                 <md-input-container ng-if="meals.repeat">
                     <label>Repetir</label>
                     <md-select ng-model="meals.mealAsked.doRepeat">
@@ -39,7 +39,7 @@
                 </md-input-container>
             
                 <md-checkbox hide-gt-xs flex ng-model="meals.repeat" aria-label="Repetir">Repetir cambio</md-checkbox>
-            -->
+            
                    
                <md-input-container ng-if="meals.checkInvites(meals.mealAsked.change)" required>
                     <label>Número de invitaciones</label>
@@ -56,7 +56,7 @@
                         </div>
                     </div>
                     <div style="text-align:center">
-                        <md-datepicker name="endDate" ng-if="meals.repeat" ng-model="meals.mealAsked.endDate" md-placeholder="Hasta*" md-min-date="meals.mealAsked.date" required></md-datepicker>
+                        <md-datepicker name="endDate" ng-if="meals.repeat" ng-model="meals.mealAsked.endDate" md-placeholder="Hasta*" md-min-date="meals.mealAsked.date" md-max-date="meals.maxFormDate" required></md-datepicker>
                         <div class="validation-messages" ng-messages="mealsForm.endDate.$touched && mealsForm.endDate.$error">
                             <div ng-message="valid">El valor introducido no es válido</div>
                             <div ng-message="required">Campo obligatorio</div>
