@@ -61,7 +61,12 @@ module.exports = function(app, express, passport) {
           mongoXlsx.mongoData2Xlsx(books, model, function(err, books) {
             //console.log('File saved at:', books.fullPath);
             res.download(books.fullPath, 'biblioteca.xlsx', function(err){
+              if(err){
+               console.log(err);              
+              }else{
+              
               fs.unlink(books.fullPath)
+              }
             });
           });
           //return res.json(books);
