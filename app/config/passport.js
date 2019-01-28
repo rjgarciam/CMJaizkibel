@@ -1,4 +1,4 @@
-vavar config     = require('./config');
+var config     = require('./config');
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 var GClientID = process.env.GCLIENTID || config.googleAuth.clientID;
 var GClientSecret = process.env.GCLIENTSECRET || config.googleAuth.clientSecret;
