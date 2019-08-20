@@ -67,11 +67,10 @@ app.use('/api', apiRoutes);
 
 
 // CatchAll Route that send users to front-end
-/*
+
 app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
 });
-*/
 
 
 // Start the server
