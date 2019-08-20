@@ -55,7 +55,7 @@ mongoose.connect(db);
 
 // set static files location
 //Commented as static files are being served through NGINX
-//app.use(express.static(__dirname + '/public/'));
+app.use(express.static(__dirname + '/public/'));
 
 app.use(passport.initialize());
 
@@ -67,9 +67,11 @@ app.use('/api', apiRoutes);
 
 
 // CatchAll Route that send users to front-end
+/*
 app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
 });
+*/
 
 
 // Start the server

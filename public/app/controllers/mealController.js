@@ -68,6 +68,7 @@ angular.module('mealCtrl',[])
   vm.mealAsked.doRepeat = 0;
   vm.mealAsked.hasDiet = $rootScope.userData.hasDiet;
   vm.mealAsked.dietContent = $rootScope.userData.dietContent;
+  vm.mealAsked.text = '';
   vm.mealAsked.name = $rootScope.userData.name;
   vm.mealButtontext = 'Enviar';
 

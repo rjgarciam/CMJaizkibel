@@ -13,6 +13,7 @@ var MealSchema   = new Schema({
   name: {type: String},
   hasDiet: {type: String},
   dietContent: {type: String},
+  text: {type: String},
 });
 
 MealSchema.index({ id: 1, date: 1, moment:1 }, { unique: true })

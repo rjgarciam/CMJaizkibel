@@ -165,6 +165,7 @@ module.exports = function(app, express, passport) {
       meal.hasDiet = req.body.hasDiet;
       meal.dietContent = req.body.dietContent;
       meal.name = req.body.name;
+      meal.text = req.body.text
       meal.save(function(err) {
         if (err) {
           res.sendStatus(409);
