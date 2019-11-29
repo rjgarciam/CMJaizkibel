@@ -28,16 +28,15 @@ angular.module('mealCtrl',[])
     /*  1 */ 'Ceno',
     /*  2 */ 'Bocadillos',
     /*  3 */ 'Tupper a las 08:00',
-    /*  4 */ 'Tupper a las 12:00',
-    /*  5 */ 'Como pronto',
-    /*  6 */ 'Como tarde',
-    /*  7 */ 'Ceno tarde',
+    /*  4 */ 'Como pronto',
+    /*  5 */ 'Como tarde',
+    /*  6 */ 'Ceno tarde',
   ];
 
   vm.dayBeforeIDkeys = [2,3];
   vm.breakfastRequests = [];
-  vm.lunchRequests = [0,2,3,4,5,6];
-  vm.dinnerRequests = [1,7];
+  vm.lunchRequests = [0,2,3,4,5];
+  vm.dinnerRequests = [1,6];
 
   vm.selectedRequest = 2;
 
